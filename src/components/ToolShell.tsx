@@ -105,6 +105,13 @@ export default function ToolShell({
               </Accordion>
             </section>
           )}
+
+          {/* Disclaimer */}
+          <section className="mt-10 rounded-lg border border-border bg-muted/50 p-4">
+            <p className="text-xs text-muted-foreground leading-relaxed">
+              <span className="font-semibold text-foreground">Disclaimer:</span> The results provided by this calculator are estimates for informational and educational purposes only and do not constitute financial, tax, or legal advice. Please consult a qualified professional before making any financial decisions.
+            </p>
+          </section>
         </div>
 
         {/* Sticky Sidebar */}
