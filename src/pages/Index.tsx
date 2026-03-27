@@ -1,52 +1,56 @@
 import { useState, useMemo } from "react";
 import { Link } from "react-router-dom";
-import { Search, Calculator, Receipt, ArrowLeftRight, TrendingUp, BarChart3, Wallet } from "lucide-react";
+import { Search, Calculator, Receipt, ArrowLeftRight, TrendingUp, BarChart3, Wallet, Home, GraduationCap, Car, CreditCard, Target, PiggyBank, DollarSign, Percent, Building } from "lucide-react";
 import { Input } from "@/components/ui/input";
 
 const tools = [
-  {
-    title: "Compound Interest Calculator",
-    description: "Visualize how your investments grow over time with interactive charts.",
-    icon: Calculator,
-    href: "/compound-interest",
-    category: "Calculators",
-  },
-  {
-    title: "Freelance Tax Estimator",
-    description: "Estimate your self-employment taxes with a simple step-by-step form.",
-    icon: Receipt,
-    href: "/tax-estimator",
-    category: "Tax Tools",
-  },
-  {
-    title: "Currency Converter",
-    description: "Convert between 150+ world currencies with live exchange rates.",
-    icon: ArrowLeftRight,
-    href: "/currency-converter",
-    category: "Converters",
-  },
+  { title: "Compound Interest Calculator", description: "Visualize how your investments grow over time with interactive charts.", icon: Calculator, href: "/compound-interest", category: "Calculators" },
+  { title: "Freelance Tax Estimator", description: "Estimate your self-employment taxes with a simple step-by-step form.", icon: Receipt, href: "/tax-estimator", category: "Tax Tools" },
+  { title: "Currency Converter", description: "Convert between 150+ world currencies with live exchange rates.", icon: ArrowLeftRight, href: "/currency-converter", category: "Converters" },
+  { title: "Student Loan Calculator", description: "Estimate monthly payments and total interest on student loans.", icon: GraduationCap, href: "/student-loan", category: "Loan & Debt" },
+  { title: "Auto Loan Calculator", description: "Calculate monthly car payments with down payment and interest.", icon: Car, href: "/auto-loan", category: "Loan & Debt" },
+  { title: "Personal Loan Calculator", description: "Compare payment plans for personal loans at various rates.", icon: CreditCard, href: "/personal-loan", category: "Loan & Debt" },
+  { title: "Debt Payoff Calculator", description: "Compare Snowball vs Avalanche strategies to get debt-free faster.", icon: CreditCard, href: "/debt-payoff", category: "Loan & Debt" },
+  { title: "Investment Goal Calculator", description: "Find how much to save monthly to reach your financial target.", icon: Target, href: "/investment-goal", category: "Investing" },
+  { title: "Retirement Savings Calculator", description: "Project retirement savings and income with the 4% rule.", icon: PiggyBank, href: "/retirement", category: "Investing" },
+  { title: "Stock Return Calculator", description: "Calculate total and annualized returns including dividends.", icon: TrendingUp, href: "/stock-return", category: "Investing" },
+  { title: "DRIP Calculator", description: "See how dividend reinvestment accelerates portfolio growth.", icon: TrendingUp, href: "/drip-calculator", category: "Investing" },
+  { title: "Tax Bracket Calculator", description: "Visualize 2024 federal tax brackets and your effective rate.", icon: Percent, href: "/tax-bracket", category: "Tax Tools" },
+  { title: "Capital Gains Tax Calculator", description: "Estimate taxes on investment gains—short-term vs long-term.", icon: DollarSign, href: "/capital-gains-tax", category: "Tax Tools" },
+  { title: "Paycheck Tax Calculator", description: "Estimate take-home pay after federal taxes and deductions.", icon: Receipt, href: "/paycheck-tax", category: "Tax Tools" },
+  { title: "50/30/20 Budget Planner", description: "Allocate income with the popular 50/30/20 budgeting rule.", icon: Wallet, href: "/budget-planner", category: "Budgeting" },
+  { title: "Net Worth Calculator", description: "Calculate net worth by totaling assets minus liabilities.", icon: BarChart3, href: "/net-worth", category: "Budgeting" },
+  { title: "Cost of Living Calculator", description: "Compare cost of living between US cities and equivalent salaries.", icon: Building, href: "/cost-of-living", category: "Budgeting" },
+  { title: "Rent vs. Buy Calculator", description: "Compare the true cost of renting vs buying a home over time.", icon: Home, href: "/rent-vs-buy", category: "Real Estate" },
+  { title: "Mortgage Amortization Calculator", description: "View full mortgage amortization schedule and interest breakdown.", icon: Home, href: "/mortgage-amortization", category: "Real Estate" },
 ];
 
 const categories = [
-  { name: "Calculators", icon: Calculator, count: 1 },
-  { name: "Tax Tools", icon: Receipt, count: 1 },
-  { name: "Converters", icon: ArrowLeftRight, count: 1 },
-  { name: "Investments", icon: TrendingUp, count: 0 },
-  { name: "Analytics", icon: BarChart3, count: 0 },
-  { name: "Budgeting", icon: Wallet, count: 0 },
+  { name: "All", icon: Calculator, count: tools.length },
+  { name: "Loan & Debt", icon: CreditCard, count: tools.filter(t => t.category === "Loan & Debt").length },
+  { name: "Investing", icon: TrendingUp, count: tools.filter(t => t.category === "Investing").length },
+  { name: "Tax Tools", icon: Receipt, count: tools.filter(t => t.category === "Tax Tools").length },
+  { name: "Budgeting", icon: Wallet, count: tools.filter(t => t.category === "Budgeting").length },
+  { name: "Real Estate", icon: Home, count: tools.filter(t => t.category === "Real Estate").length },
+  { name: "Calculators", icon: Calculator, count: tools.filter(t => t.category === "Calculators").length },
+  { name: "Converters", icon: ArrowLeftRight, count: tools.filter(t => t.category === "Converters").length },
 ];
 
 export default function Index() {
   const [search, setSearch] = useState("");
+  const [activeCategory, setActiveCategory] = useState("All");
 
   const filtered = useMemo(
-    () => tools.filter((t) => t.title.toLowerCase().includes(search.toLowerCase())),
-    [search]
+    () => tools.filter((t) => {
+      const matchesSearch = t.title.toLowerCase().includes(search.toLowerCase());
+      const matchesCategory = activeCategory === "All" || t.category === activeCategory;
+      return matchesSearch && matchesCategory;
+    }),
+    [search, activeCategory]
   );
 
   return (
     <div>
-      {/* Hero */}
       <section className="hero-gradient py-20 md:py-28">
         <div className="container text-center">
           <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight text-primary-foreground leading-tight">
@@ -67,37 +71,40 @@ export default function Index() {
         </div>
       </section>
 
-      {/* Ad banner below hero */}
       <div className="container mt-8">
         <div className="ad-slot rounded-lg p-3 flex items-center justify-center h-[90px] text-muted-foreground text-sm">
           <span className="text-xs">Advertisement — 728×90 Leaderboard</span>
         </div>
       </div>
 
-      {/* Categories */}
       <section className="container mt-12">
         <h2 className="text-xl font-semibold mb-6 text-foreground">Categories</h2>
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3">
           {categories.map((cat) => (
-            <div key={cat.name} className="surface-elevated rounded-xl p-4 text-center hover:ring-2 hover:ring-primary/20 transition-all cursor-default">
-              <cat.icon className="h-6 w-6 mx-auto text-primary mb-2" />
-              <div className="text-sm font-medium text-foreground">{cat.name}</div>
-              <div className="text-xs text-muted-foreground">{cat.count} tool{cat.count !== 1 ? "s" : ""}</div>
-            </div>
+            <button
+              key={cat.name}
+              onClick={() => setActiveCategory(cat.name)}
+              className={`surface-elevated rounded-xl p-4 text-center transition-all cursor-pointer ${activeCategory === cat.name ? "ring-2 ring-primary" : "hover:ring-2 hover:ring-primary/20"}`}
+            >
+              <cat.icon className="h-5 w-5 mx-auto text-primary mb-1.5" />
+              <div className="text-xs font-medium text-foreground">{cat.name}</div>
+              <div className="text-[10px] text-muted-foreground">{cat.count} tool{cat.count !== 1 ? "s" : ""}</div>
+            </button>
           ))}
         </div>
       </section>
 
-      {/* Tools Grid */}
       <section className="container mt-12 pb-16">
-        <h2 className="text-xl font-semibold mb-6 text-foreground">Popular Tools</h2>
+        <h2 className="text-xl font-semibold mb-6 text-foreground">
+          {activeCategory === "All" ? "All Tools" : activeCategory} <span className="text-muted-foreground font-normal text-base">({filtered.length})</span>
+        </h2>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {filtered.map((tool, i) => (
             <Link
               key={tool.href}
               to={tool.href}
               className="surface-elevated rounded-xl p-6 group hover:ring-2 hover:ring-primary/20 transition-all animate-fade-in"
-              style={{ animationDelay: `${i * 80}ms` }}
+              style={{ animationDelay: `${i * 40}ms` }}
             >
               <div className="flex items-center gap-3 mb-3">
                 <div className="h-10 w-10 rounded-lg bg-accent flex items-center justify-center">
