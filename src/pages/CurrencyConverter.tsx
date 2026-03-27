@@ -43,7 +43,21 @@ export default function CurrencyConverter() {
   return (
     <ToolShell
       title="Currency Converter"
-      description="Convert between world currencies using live exchange rates."
+      description="Convert between world currencies using live exchange rates. Quick, accurate, and free."
+      howToUse="Enter the amount you want to convert, select the source currency (From) and destination currency (To), and the result updates instantly. Use the swap button to quickly reverse the conversion direction."
+      understandingTitle="Understanding Exchange Rates"
+      understandingContent="Exchange rates represent the value of one currency relative to another and fluctuate based on economic factors such as inflation, interest rates, political stability, and trade balances. The rates shown here are mid-market rates updated regularly. Note that banks and money transfer services typically add a margin on top of the mid-market rate, so the rate you receive when exchanging money may differ slightly."
+      faqs={[
+        { question: "How often are the exchange rates updated?", answer: "The rates are fetched from the Open Exchange Rates API and are typically updated once every 24 hours." },
+        { question: "Are these the rates I'll get at my bank?", answer: "These are mid-market rates. Banks and currency exchange services usually add a margin (spread) to these rates, so the rate you receive will typically be slightly less favorable." },
+        { question: "Can I convert cryptocurrencies?", answer: "This converter currently supports traditional fiat currencies only. Cryptocurrency conversion may be added in a future update." },
+        { question: "Is there a limit on the amount I can convert?", answer: "There is no limit in this calculator — you can enter any amount. However, actual transfer limits depend on your bank or money transfer service." },
+      ]}
+      relatedTools={[
+        { title: "Compound Interest Calculator", href: "/compound-interest" },
+        { title: "Freelance Tax Estimator", href: "/tax-estimator" },
+        { title: "Inflation Calculator", href: "#" },
+      ]}
     >
       <div className="max-w-lg space-y-6">
         <div>

@@ -17,7 +17,6 @@ export default function TaxEstimator() {
   const standardDeduction = filingStatus === "single" ? 14600 : 29200;
   const taxableIncome = Math.max(0, netIncome - selfEmploymentTax / 2 - standardDeduction);
 
-  // Simplified 2024 brackets (single)
   const calcFederalTax = (ti: number) => {
     const brackets = filingStatus === "single"
       ? [
@@ -46,7 +45,21 @@ export default function TaxEstimator() {
   return (
     <ToolShell
       title="Freelance Tax Estimator"
-      description="Estimate your self-employment taxes for 2024 with this simple step-by-step form."
+      description="Estimate your self-employment taxes for 2024 with this simple step-by-step form. Get a clear picture of your federal tax obligations as a freelancer."
+      howToUse="Start by entering your gross freelance income and filing status in Step 1. In Step 2, enter your deductible business expenses. The calculator will then show your estimated self-employment tax, federal income tax, effective tax rate, and recommended quarterly payments."
+      understandingTitle="Understanding Self-Employment Taxes"
+      understandingContent="As a freelancer or self-employed individual, you're responsible for paying both the employer and employee portions of Social Security and Medicare taxes — known as the self-employment (SE) tax, which totals 15.3% on 92.35% of your net earnings. You can deduct half of this SE tax when calculating your adjusted gross income. After subtracting the standard deduction, your remaining taxable income is taxed according to the federal income tax brackets. Estimated taxes are typically paid quarterly to avoid underpayment penalties."
+      faqs={[
+        { question: "Do I need to pay self-employment tax?", answer: "If your net self-employment earnings are $400 or more for the year, you are required to pay self-employment tax and file a tax return." },
+        { question: "What expenses can I deduct?", answer: "Common deductible expenses include office supplies, software subscriptions, home office costs, business travel, health insurance premiums, and professional development expenses." },
+        { question: "When are quarterly tax payments due?", answer: "Quarterly estimated tax payments are generally due on April 15, June 15, September 15, and January 15 of the following year." },
+        { question: "Does this calculator include state taxes?", answer: "No, this calculator only estimates federal income tax and self-employment tax. State tax obligations vary by state and are not included." },
+      ]}
+      relatedTools={[
+        { title: "Compound Interest Calculator", href: "/compound-interest" },
+        { title: "Currency Converter", href: "/currency-converter" },
+        { title: "Paycheck Calculator", href: "#" },
+      ]}
     >
       {/* Progress */}
       <div className="flex items-center gap-2 mb-8">
@@ -73,13 +86,7 @@ export default function TaxEstimator() {
             <Label>Filing Status</Label>
             <div className="flex gap-3 mt-1">
               {(["single", "married"] as const).map((s) => (
-                <Button
-                  key={s}
-                  variant={filingStatus === s ? "default" : "outline"}
-                  size="sm"
-                  onClick={() => setFilingStatus(s)}
-                  className="capitalize"
-                >
+                <Button key={s} variant={filingStatus === s ? "default" : "outline"} size="sm" onClick={() => setFilingStatus(s)} className="capitalize">
                   {s}
                 </Button>
               ))}
