@@ -43,7 +43,7 @@ export default function CompoundInterest() {
       relatedTools={[
         { title: "Freelance Tax Estimator", href: "/tax-estimator" },
         { title: "Currency Converter", href: "/currency-converter" },
-        { title: "Loan Amortization Calculator", href: "#" },
+        { title: "Mortgage Amortization Calculator", href: "/mortgage-amortization" },
       ]}
     >
       <div className="grid md:grid-cols-2 gap-8">
