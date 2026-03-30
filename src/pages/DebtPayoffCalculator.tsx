@@ -40,7 +40,6 @@ export default function DebtPayoffCalculator() {
 
     while (balances.some((b) => b > 0) && month < 600) {
       chart.push({ month, total: Math.round(balances.reduce((a, b) => a + b, 0)) });
-      // Pay minimums
       for (let i = 0; i < balances.length; i++) {
         if (balances[i] <= 0) continue;
         const interest = balances[i] * rates[i];
@@ -49,7 +48,6 @@ export default function DebtPayoffCalculator() {
         const pmt = Math.min(mins[i], balances[i]);
         balances[i] -= pmt;
       }
-      // Apply extra payment to target
       let extra = extraPayment;
       const order = balances.map((_, i) => i).filter((i) => balances[i] > 0);
       if (strategy === "avalanche") order.sort((a, b) => rates[b] - rates[a]);
@@ -68,23 +66,28 @@ export default function DebtPayoffCalculator() {
   }, [debts, extraPayment, strategy]);
 
   const totalDebt = debts.reduce((s, d) => s + d.balance, 0);
+  const totalMinPayments = debts.reduce((s, d) => s + d.minPayment, 0);
 
   return (
     <ToolShell
       title="Debt Payoff Calculator"
-      description="Compare Snowball vs. Avalanche strategies to find the fastest way to become debt-free."
-      howToUse="Add your debts with their balances, interest rates, and minimum payments. Set any extra monthly payment amount. Toggle between Snowball (smallest balance first) and Avalanche (highest rate first) to compare strategies."
+      description="Compare the Snowball and Avalanche debt payoff strategies side by side. Add all your debts, set an extra payment amount, and see exactly when you'll be debt-free — and how much interest you'll save along the way."
+      howToUse="Start by entering each of your debts with their current balance, interest rate, and minimum monthly payment. Use the '+ Add Debt' button for additional debts. Set the extra amount you can pay beyond minimums each month — even $50 helps significantly. Toggle between 'Avalanche' (targets highest interest rate first, saves the most money) and 'Snowball' (targets smallest balance first, provides quicker psychological wins). The chart shows your total debt declining to zero over time, and the summary cards display your payoff timeline and total interest cost."
       understandingTitle="Snowball vs. Avalanche Method"
-      understandingContent="The Avalanche method targets the highest interest rate first, minimizing total interest paid. The Snowball method targets the smallest balance first, giving psychological wins sooner. Both beat making only minimum payments. The Avalanche saves more money mathematically, while the Snowball keeps motivation high."
+      understandingContent="Both strategies share the same core principle: make minimum payments on all debts, then direct every extra dollar toward one specific debt until it's eliminated, then roll that payment into the next debt. The Avalanche method targets the debt with the highest interest rate first. This is mathematically optimal — it minimizes total interest paid and gets you debt-free in the least amount of time (given the same extra payment). The Snowball method targets the smallest balance first. While it costs slightly more in interest, research by behavioral economists has shown that the psychological boost of eliminating a debt quickly increases the likelihood of sticking with the plan. Harvard Business Review research found that people who focused on small balances first were more likely to eliminate all their debt. The best strategy is the one you'll actually follow. If you're disciplined and motivated by numbers, use Avalanche. If you need quick wins to stay motivated, use Snowball. Either way, both are dramatically better than making only minimum payments, which can take 15–30 years to pay off credit card debt."
       faqs={[
-        { question: "Which method saves the most money?", answer: "Avalanche saves the most by targeting high-interest debt first. However, the Snowball method's quick wins help many people stay motivated." },
-        { question: "How much extra should I pay?", answer: "Any extra helps. Even $50/month extra can shave years off repayment and save hundreds or thousands in interest." },
-        { question: "Should I consolidate my debts instead?", answer: "Consolidation can help if you get a lower interest rate. However, it doesn't reduce the principal—only changes the structure." },
+        { question: "Which method saves the most money?", answer: "Avalanche always saves the most money because it eliminates the highest-interest debt first, reducing the total interest that accrues. For example, with $37,000 in debt and $200 extra per month, Avalanche might save $800–$2,000+ more than Snowball, depending on the rate differential between your debts." },
+        { question: "How much extra should I pay?", answer: "Any amount helps. Even $50/month extra can shave years off repayment. To find your extra payment: review your budget for cuts (subscriptions, dining out), sell unused items, or direct windfalls (tax refunds, bonuses) to debt. The average American household has $300–$500/month in discretionary spending that could be redirected." },
+        { question: "Should I consolidate my debts instead?", answer: "Consolidation makes sense if: (1) you can get a lower interest rate than your current weighted average, (2) you want one simple payment instead of multiple, (3) you qualify for a 0% balance transfer credit card (typical promo period: 15–21 months). Beware: consolidation doesn't reduce principal, and some people run up new debt after consolidating — making the problem worse." },
+        { question: "What about balance transfer cards?", answer: "A 0% APR balance transfer card can be a powerful tool. Transfer high-interest debt, pay $0 in interest during the promo period (typically 15–21 months), and focus 100% of payments on principal. Watch out for: transfer fees (typically 3–5%), the high rate after the promo ends (often 20%+), and the temptation to spend on the newly available credit." },
+        { question: "Should I save or pay off debt first?", answer: "Build a small emergency fund first ($1,000–$2,000) to avoid taking on new debt for unexpected expenses. Then aggressively pay off high-interest debt (anything above 7–8%). After high-interest debt is gone, balance between investing (especially to capture employer 401(k) match) and paying off remaining low-interest debt." },
+        { question: "How do I stay motivated?", answer: "Track your progress visually (debt payoff chart). Celebrate milestones when each debt is eliminated. Calculate the total interest saved by paying extra. Join communities (r/personalfinance, debt-free journey groups). Remember: every month your total balance drops is a victory." },
       ]}
       relatedTools={[
         { title: "Student Loan Calculator", href: "/student-loan" },
         { title: "Personal Loan Calculator", href: "/personal-loan" },
         { title: "Budget Planner", href: "/budget-planner" },
+        { title: "Net Worth Calculator", href: "/net-worth" },
       ]}
     >
       <div className="space-y-6">
@@ -102,7 +105,11 @@ export default function DebtPayoffCalculator() {
         </div>
 
         <div className="grid sm:grid-cols-3 gap-4">
-          <div><Label>Extra Monthly Payment ($)</Label><Input type="number" value={extraPayment} onChange={(e) => setExtraPayment(+e.target.value)} min={0} /></div>
+          <div>
+            <Label>Extra Monthly Payment ($)</Label>
+            <Input type="number" value={extraPayment} onChange={(e) => setExtraPayment(+e.target.value)} min={0} />
+            <p className="text-xs text-muted-foreground mt-1">Amount above all minimums combined (${totalMinPayments}/mo).</p>
+          </div>
           <div className="flex gap-2 items-end">
             <Button variant={strategy === "avalanche" ? "default" : "outline"} onClick={() => setStrategy("avalanche")} className="flex-1">Avalanche</Button>
             <Button variant={strategy === "snowball" ? "default" : "outline"} onClick={() => setStrategy("snowball")} className="flex-1">Snowball</Button>
