@@ -20,14 +20,12 @@ export default function CapitalGainsTaxCalculator() {
 
     let taxRate: number;
     if (holdingPeriod === "short") {
-      // Short-term = ordinary income rates (simplified)
       if (taxableIncome + gain > 243725) taxRate = 32;
       else if (taxableIncome + gain > 191950) taxRate = 24;
       else if (taxableIncome + gain > 100525) taxRate = 22;
       else if (taxableIncome + gain > 47150) taxRate = 12;
       else taxRate = 10;
     } else {
-      // Long-term capital gains rates 2024
       const totalIncome = taxableIncome + gain;
       if (filing === "single") {
         if (totalIncome > 518900) taxRate = 20;
@@ -54,38 +52,54 @@ export default function CapitalGainsTaxCalculator() {
   return (
     <ToolShell
       title="Capital Gains Tax Calculator"
-      description="Estimate federal capital gains tax on stocks, real estate, or other investments. Compare short-term vs. long-term rates."
-      howToUse="Enter your purchase price, sale price, holding period, taxable income, and filing status. The calculator estimates your capital gains tax and net proceeds."
+      description="Estimate your federal capital gains tax on stocks, real estate, crypto, or other investments. Compare the tax impact of short-term vs. long-term holding periods and see how your income level affects the rate you'll pay."
+      howToUse="Enter your original purchase price (cost basis) and the sale price. Select whether you held the asset for less than one year (short-term) or one year or more (long-term) — this dramatically affects your tax rate. Add your other taxable income for the year and filing status, as these determine which capital gains bracket you fall into. The calculator shows your capital gain, applicable tax rate, estimated tax owed, and net proceeds after tax. The pie chart visualizes the breakdown between your original cost, net profit, and tax."
       understandingTitle="Understanding Capital Gains Tax"
-      understandingContent="Capital gains are profits from selling assets. Short-term gains (held < 1 year) are taxed as ordinary income (10-37%). Long-term gains (held 1+ years) get preferential rates of 0%, 15%, or 20%, depending on income. The NIIT (3.8% surtax) may apply to high earners. Strategic timing of sales can significantly impact your tax bill."
+      understandingContent="Capital gains tax applies to profit from selling assets — stocks, bonds, real estate, crypto, art, and other investments. The tax rate depends primarily on how long you held the asset. Short-term gains (held less than one year) are taxed as ordinary income at your marginal rate (10–37% in 2024). Long-term gains (held one year or more) receive preferential rates: 0% for low-income filers (taxable income up to $47,025 single / $94,050 married), 15% for most filers (the majority of Americans), or 20% for high-income filers ($518,900+ single / $583,750+ married). Additionally, high earners may owe the Net Investment Income Tax (NIIT) of 3.8% on top of capital gains, bringing the effective top rate to 23.8%. This rate difference is one of the most significant tax incentives in the US tax code and is a primary reason buy-and-hold investing is tax-efficient. Strategic tax planning — including tax-loss harvesting (selling losing investments to offset gains), timing sales across tax years, and using tax-advantaged accounts — can save thousands annually. For real estate, the primary residence exclusion allows $250,000 ($500,000 married) in gains tax-free if you've lived in the home 2 of the last 5 years."
       faqs={[
-        { question: "What qualifies as long-term?", answer: "Assets held for more than one year qualify for long-term capital gains rates, which are significantly lower than short-term rates." },
-        { question: "Can I offset gains with losses?", answer: "Yes. Capital losses offset capital gains dollar-for-dollar. You can also deduct up to $3,000 of net losses against ordinary income annually." },
-        { question: "Does this include state capital gains tax?", answer: "No. Many states tax capital gains as ordinary income. Check your state's specific rules." },
+        { question: "What qualifies as long-term?", answer: "Assets held for more than one year (at least one year and one day) qualify for long-term capital gains rates. The holding period starts the day after purchase and includes the day of sale. For assets received as gifts, you inherit the donor's holding period. For inherited assets, the holding period is automatically considered long-term regardless of when the deceased acquired it." },
+        { question: "Can I offset gains with losses?", answer: "Yes — this is called tax-loss harvesting. Capital losses offset capital gains dollar-for-dollar: short-term losses first offset short-term gains, then long-term gains. After offsetting all gains, you can deduct up to $3,000 of net losses against ordinary income each year. Remaining losses carry forward indefinitely to future tax years." },
+        { question: "Does this include state capital gains tax?", answer: "No. Most states tax capital gains as ordinary income. Some exceptions: 9 states have no income tax, so no state capital gains tax. California taxes capital gains at up to 13.3% — on a $100,000 gain, that's $13,300 in state tax alone, on top of federal. A few states (like New Hampshire) only tax dividend/interest income, not capital gains." },
+        { question: "How are crypto gains taxed?", answer: "Cryptocurrency is treated as property by the IRS. Short-term crypto gains (held < 1 year) are taxed as ordinary income. Long-term crypto gains get the preferential rates. Every trade — including crypto-to-crypto swaps — is a taxable event. Mining and staking rewards are taxed as ordinary income when received." },
+        { question: "What is the primary residence exclusion?", answer: "If you sell your primary home and you've lived in it for at least 2 of the last 5 years, you can exclude up to $250,000 in gains ($500,000 if married filing jointly) from capital gains tax. This is one of the most valuable tax benefits in the US tax code. It can be used repeatedly (once every 2 years)." },
+        { question: "What is the 'step-up in basis' for inherited assets?", answer: "When you inherit an asset, your cost basis 'steps up' to the fair market value on the date of the decedent's death. This means all unrealized gains that accumulated during the deceased person's lifetime are never taxed. For example, if a parent bought stock for $10,000 that's worth $100,000 at death, the heir's basis is $100,000 — the $90,000 gain is eliminated for tax purposes." },
       ]}
       relatedTools={[
         { title: "Stock Return Calculator", href: "/stock-return" },
         { title: "Tax Bracket Calculator", href: "/tax-bracket" },
         { title: "Freelance Tax Estimator", href: "/tax-estimator" },
+        { title: "DRIP Calculator", href: "/drip-calculator" },
       ]}
     >
       <div className="grid md:grid-cols-2 gap-8">
         <div className="space-y-5">
           <div className="grid grid-cols-2 gap-3">
-            <div><Label>Purchase Price ($)</Label><Input type="number" value={purchasePrice} onChange={(e) => setPurchasePrice(+e.target.value)} min={0} /></div>
-            <div><Label>Sale Price ($)</Label><Input type="number" value={salePrice} onChange={(e) => setSalePrice(+e.target.value)} min={0} /></div>
+            <div>
+              <Label>Purchase Price ($)</Label>
+              <Input type="number" value={purchasePrice} onChange={(e) => setPurchasePrice(+e.target.value)} min={0} />
+              <p className="text-xs text-muted-foreground mt-1">Your original cost basis.</p>
+            </div>
+            <div>
+              <Label>Sale Price ($)</Label>
+              <Input type="number" value={salePrice} onChange={(e) => setSalePrice(+e.target.value)} min={0} />
+              <p className="text-xs text-muted-foreground mt-1">Actual or expected sale price.</p>
+            </div>
           </div>
           <div>
             <Label>Holding Period</Label>
             <Select value={holdingPeriod} onValueChange={(v) => setHoldingPeriod(v as "short" | "long")}>
               <SelectTrigger><SelectValue /></SelectTrigger>
               <SelectContent>
-                <SelectItem value="short">Short-Term (&lt; 1 year)</SelectItem>
-                <SelectItem value="long">Long-Term (1+ years)</SelectItem>
+                <SelectItem value="short">Short-Term (&lt; 1 year) — taxed as ordinary income</SelectItem>
+                <SelectItem value="long">Long-Term (1+ years) — preferential rates</SelectItem>
               </SelectContent>
             </Select>
           </div>
-          <div><Label>Taxable Income ($)</Label><Input type="number" value={taxableIncome} onChange={(e) => setTaxableIncome(+e.target.value)} min={0} /></div>
+          <div>
+            <Label>Other Taxable Income ($)</Label>
+            <Input type="number" value={taxableIncome} onChange={(e) => setTaxableIncome(+e.target.value)} min={0} />
+            <p className="text-xs text-muted-foreground mt-1">Your income excluding this capital gain.</p>
+          </div>
           <div>
             <Label>Filing Status</Label>
             <Select value={filing} onValueChange={(v) => setFiling(v as "single" | "married")}>
