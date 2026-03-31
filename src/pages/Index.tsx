@@ -81,36 +81,68 @@ export default function Index() {
   return (
     <div>
       {/* Hero */}
-      <section className="hero-gradient py-20 md:py-32">
-        <div className="container text-center">
-          <span className="inline-block px-4 py-1.5 rounded-full bg-primary-foreground/15 text-primary-foreground text-sm font-medium mb-6 backdrop-blur-sm">
+      <section className="relative overflow-hidden py-24 md:py-36">
+        {/* Layered gradient background */}
+        <div className="absolute inset-0 hero-gradient" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,hsl(234_89%_75%/0.3),transparent)]" />
+        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent" />
+
+        {/* Floating decorative orbs */}
+        <div className="absolute top-20 left-[10%] w-64 h-64 rounded-full bg-primary-foreground/5 blur-3xl animate-[pulse_6s_ease-in-out_infinite]" />
+        <div className="absolute bottom-10 right-[15%] w-48 h-48 rounded-full bg-primary-foreground/5 blur-3xl animate-[pulse_8s_ease-in-out_infinite_1s]" />
+
+        <div className="container relative text-center">
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary-foreground/15 text-primary-foreground text-sm font-medium mb-6 backdrop-blur-sm border border-primary-foreground/10 animate-fade-in">
+            <Zap className="h-3.5 w-3.5" />
             19 Free Financial Tools — No Sign-Up Required
           </span>
-          <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-primary-foreground leading-tight">
-            Smart Finance Tools,<br className="hidden sm:block" /> One Step Ahead
+          <h1 className="text-4xl md:text-5xl lg:text-7xl font-extrabold tracking-tight text-primary-foreground leading-[1.1] animate-fade-in">
+            Smart Finance Tools,<br className="hidden sm:block" />
+            <span className="relative">
+              One Step Ahead
+              <svg className="absolute -bottom-2 left-0 w-full h-3 text-primary-foreground/30" viewBox="0 0 200 8" preserveAspectRatio="none">
+                <path d="M0 7 Q50 0, 100 4 T200 2" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+              </svg>
+            </span>
           </h1>
-          <p className="mt-5 text-primary-foreground/80 max-w-2xl mx-auto text-lg md:text-xl">
+          <p className="mt-6 text-primary-foreground/80 max-w-2xl mx-auto text-lg md:text-xl leading-relaxed animate-fade-in" style={{ animationDelay: "100ms" }}>
             Professional-grade calculators for loans, taxes, investing, budgeting, and real estate — all free, private, and instant.
           </p>
-          <div className="mt-8 max-w-md mx-auto relative">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+
+          <div className="mt-10 max-w-lg mx-auto relative animate-fade-in" style={{ animationDelay: "200ms" }}>
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
             <Input
               placeholder="Search 19 financial tools…"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="pl-10 h-12 rounded-full bg-card border-0 shadow-lg text-foreground placeholder:text-muted-foreground"
+              className="pl-12 h-14 rounded-full bg-card border-0 shadow-2xl text-base text-foreground placeholder:text-muted-foreground focus-visible:ring-2 focus-visible:ring-primary-foreground/30"
             />
           </div>
-          <div className="mt-6 flex flex-wrap justify-center gap-2 text-sm text-primary-foreground/70">
-            <span>Popular:</span>
+
+          <div className="mt-6 flex flex-wrap justify-center gap-2 text-sm text-primary-foreground/70 animate-fade-in" style={{ animationDelay: "300ms" }}>
+            <span className="font-medium">Popular:</span>
             {["Compound Interest", "Debt Payoff", "Tax Bracket", "Retirement"].map(name => {
               const tool = tools.find(t => t.title.includes(name));
               return tool ? (
-                <Link key={tool.href} to={tool.href} className="underline underline-offset-2 hover:text-primary-foreground transition-colors">
+                <Link key={tool.href} to={tool.href} className="px-3 py-1 rounded-full bg-primary-foreground/10 hover:bg-primary-foreground/20 transition-colors">
                   {name}
                 </Link>
               ) : null;
             })}
+          </div>
+
+          {/* Stats bar */}
+          <div className="mt-12 flex flex-wrap justify-center gap-8 md:gap-16 animate-fade-in" style={{ animationDelay: "400ms" }}>
+            {[
+              { value: "19", label: "Free Tools" },
+              { value: "100%", label: "Private" },
+              { value: "0", label: "Sign-ups Needed" },
+            ].map(stat => (
+              <div key={stat.label} className="text-center">
+                <div className="text-2xl md:text-3xl font-extrabold text-primary-foreground">{stat.value}</div>
+                <div className="text-xs text-primary-foreground/60 mt-0.5">{stat.label}</div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -124,20 +156,33 @@ export default function Index() {
 
       {/* Why 1StepAhead */}
       <section className="container mt-16">
-        <div className="text-center mb-10">
-          <h2 className="text-2xl md:text-3xl font-bold text-foreground">Why 1StepAhead?</h2>
-          <p className="mt-2 text-muted-foreground max-w-xl mx-auto">
-            Trusted by thousands of users to make smarter financial decisions every day.
+        <div className="text-center mb-12">
+          <span className="inline-block px-3 py-1 rounded-full bg-accent text-accent-foreground text-xs font-semibold uppercase tracking-wider mb-3">
+            Why Choose Us
+          </span>
+          <h2 className="text-2xl md:text-4xl font-bold text-foreground">
+            Built for <span className="text-primary">Smarter</span> Decisions
+          </h2>
+          <p className="mt-3 text-muted-foreground max-w-xl mx-auto text-base">
+            Trusted by thousands of users to make confident financial decisions every day.
           </p>
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {features.map((f) => (
-            <div key={f.title} className="surface-elevated rounded-xl p-6 text-center">
-              <div className="h-12 w-12 rounded-xl bg-accent flex items-center justify-center mx-auto mb-4">
-                <f.icon className="h-6 w-6 text-accent-foreground" />
+          {features.map((f, i) => (
+            <div
+              key={f.title}
+              className="group relative surface-elevated rounded-2xl p-7 text-center hover-scale animate-fade-in overflow-hidden"
+              style={{ animationDelay: `${i * 80}ms` }}
+            >
+              {/* Subtle gradient accent on hover */}
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl" />
+              <div className="relative">
+                <div className="h-14 w-14 rounded-2xl bg-accent flex items-center justify-center mx-auto mb-5 group-hover:bg-primary/10 transition-colors duration-300">
+                  <f.icon className="h-7 w-7 text-accent-foreground group-hover:text-primary transition-colors duration-300" />
+                </div>
+                <h3 className="font-bold text-foreground mb-2 text-base">{f.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{f.description}</p>
               </div>
-              <h3 className="font-semibold text-foreground mb-1">{f.title}</h3>
-              <p className="text-sm text-muted-foreground">{f.description}</p>
             </div>
           ))}
         </div>
