@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,89 +6,99 @@
 
 @layer base {
   :root {
-    --background: 210 20% 98%;
-    --foreground: 215 25% 12%;
+    --background: 220 20% 97%;
+    --foreground: 220 30% 10%;
 
     --card: 0 0% 100%;
-    --card-foreground: 215 25% 12%;
+    --card-foreground: 220 30% 10%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 215 25% 12%;
+    --popover-foreground: 220 30% 10%;
 
-    --primary: 234 89% 60%;
+    --primary: 228 76% 52%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 215 16% 93%;
-    --secondary-foreground: 215 25% 27%;
+    --secondary: 220 14% 92%;
+    --secondary-foreground: 220 25% 30%;
 
-    --muted: 215 16% 95%;
-    --muted-foreground: 215 14% 46%;
+    --muted: 220 14% 95%;
+    --muted-foreground: 220 10% 46%;
 
-    --accent: 234 89% 96%;
-    --accent-foreground: 234 89% 45%;
+    --accent: 228 76% 95%;
+    --accent-foreground: 228 76% 42%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 215 20% 90%;
-    --input: 215 20% 90%;
-    --ring: 234 89% 60%;
+    --border: 220 16% 90%;
+    --input: 220 16% 90%;
+    --ring: 228 76% 52%;
 
-    --radius: 0.625rem;
+    --radius: 0.75rem;
 
     --sidebar-background: 220 20% 97%;
-    --sidebar-foreground: 215 25% 27%;
-    --sidebar-primary: 234 89% 60%;
+    --sidebar-foreground: 220 25% 30%;
+    --sidebar-primary: 228 76% 52%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 234 89% 96%;
-    --sidebar-accent-foreground: 234 89% 45%;
-    --sidebar-border: 215 20% 90%;
-    --sidebar-ring: 234 89% 60%;
+    --sidebar-accent: 228 76% 95%;
+    --sidebar-accent-foreground: 228 76% 42%;
+    --sidebar-border: 220 16% 90%;
+    --sidebar-ring: 228 76% 52%;
 
-    /* Custom tokens */
-    --hero-gradient-from: 234 89% 60%;
-    --hero-gradient-to: 234 60% 40%;
+    /* Finance tokens */
+    --hero-gradient-from: 228 76% 52%;
+    --hero-gradient-via: 240 60% 38%;
+    --hero-gradient-to: 250 50% 28%;
     --surface-elevated: 0 0% 100%;
-    --chart-1: 234 89% 60%;
-    --chart-2: 234 60% 75%;
-    --chart-3: 170 60% 50%;
-    --chart-4: 25 95% 60%;
+    --success: 158 64% 42%;
+    --success-foreground: 158 64% 96%;
+    --gold: 40 90% 52%;
+    --gold-foreground: 40 90% 96%;
+    --chart-1: 228 76% 52%;
+    --chart-2: 228 50% 70%;
+    --chart-3: 158 64% 42%;
+    --chart-4: 40 90% 52%;
     --chart-5: 340 75% 55%;
-    --ad-bg: 215 16% 96%;
+    --ad-bg: 220 14% 96%;
   }
 
   .dark {
-    --background: 222 47% 6%;
-    --foreground: 210 40% 98%;
-    --card: 222 47% 9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222 47% 9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 234 89% 65%;
+    --background: 224 50% 6%;
+    --foreground: 210 40% 96%;
+    --card: 224 50% 9%;
+    --card-foreground: 210 40% 96%;
+    --popover: 224 50% 9%;
+    --popover-foreground: 210 40% 96%;
+    --primary: 228 76% 62%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 217 33% 17%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217 33% 17%;
-    --muted-foreground: 215 20% 65%;
-    --accent: 234 40% 20%;
-    --accent-foreground: 234 89% 75%;
+    --secondary: 220 30% 16%;
+    --secondary-foreground: 210 40% 96%;
+    --muted: 220 30% 16%;
+    --muted-foreground: 220 16% 62%;
+    --accent: 228 40% 18%;
+    --accent-foreground: 228 76% 72%;
     --destructive: 0 63% 31%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217 33% 17%;
-    --input: 217 33% 17%;
-    --ring: 234 89% 65%;
-    --sidebar-background: 222 47% 8%;
-    --sidebar-foreground: 210 40% 90%;
-    --sidebar-primary: 234 89% 65%;
+    --destructive-foreground: 210 40% 96%;
+    --border: 220 30% 16%;
+    --input: 220 30% 16%;
+    --ring: 228 76% 62%;
+    --sidebar-background: 224 50% 8%;
+    --sidebar-foreground: 210 40% 88%;
+    --sidebar-primary: 228 76% 62%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 234 40% 20%;
-    --sidebar-accent-foreground: 234 89% 75%;
-    --sidebar-border: 217 33% 17%;
-    --sidebar-ring: 234 89% 65%;
-    --hero-gradient-from: 234 89% 55%;
-    --hero-gradient-to: 234 60% 35%;
-    --surface-elevated: 222 47% 10%;
-    --ad-bg: 217 33% 12%;
+    --sidebar-accent: 228 40% 18%;
+    --sidebar-accent-foreground: 228 76% 72%;
+    --sidebar-border: 220 30% 16%;
+    --sidebar-ring: 228 76% 62%;
+    --hero-gradient-from: 228 76% 50%;
+    --hero-gradient-via: 240 60% 32%;
+    --hero-gradient-to: 250 50% 22%;
+    --surface-elevated: 224 50% 10%;
+    --success: 158 64% 38%;
+    --success-foreground: 158 64% 92%;
+    --gold: 40 80% 48%;
+    --gold-foreground: 40 80% 92%;
+    --ad-bg: 220 30% 11%;
   }
 }
 
@@ -103,14 +113,38 @@
 
 @layer utilities {
   .hero-gradient {
-    background: linear-gradient(135deg, hsl(var(--hero-gradient-from)), hsl(var(--hero-gradient-to)));
+    background: linear-gradient(145deg, hsl(var(--hero-gradient-from)), hsl(var(--hero-gradient-via)), hsl(var(--hero-gradient-to)));
   }
   .surface-elevated {
     background: hsl(var(--surface-elevated));
-    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.06), 0 1px 2px -1px rgb(0 0 0 / 0.06);
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.04), 0 1px 2px -1px rgb(0 0 0 / 0.04);
+  }
+  .glass {
+    background: hsl(var(--surface-elevated) / 0.7);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
   }
   .ad-slot {
     background: hsl(var(--ad-bg));
     border: 1px dashed hsl(var(--border));
+  }
+  .text-gradient {
+    background: linear-gradient(135deg, hsl(var(--hero-gradient-from)), hsl(var(--success)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .finance-grid {
+    background-image:
+      linear-gradient(hsl(var(--border) / 0.4) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--border) / 0.4) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+  .hover-lift {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .hover-lift:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px -4px rgb(0 0 0 / 0.1), 0 2px 8px -2px rgb(0 0 0 / 0.06);
   }
 }
