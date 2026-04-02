@@ -35,9 +35,9 @@ interface ToolShellProps {
 }
 
 const AdSlot = ({ label, className = "" }: { label: string; className?: string }) => (
-  <div className={`ad-slot rounded-lg p-4 flex flex-col items-center justify-center text-muted-foreground text-sm ${className}`}>
-    <span className="font-medium mb-1">Ad Space</span>
-    <span className="text-xs">{label}</span>
+  <div className={`ad-slot rounded-xl p-4 flex flex-col items-center justify-center text-muted-foreground text-xs ${className}`}>
+    <span className="font-medium mb-0.5">Ad Space</span>
+    <span>{label}</span>
   </div>
 );
 
@@ -53,52 +53,49 @@ export default function ToolShell({
 }: ToolShellProps) {
   return (
     <div className="container py-8 md:py-12">
-      {/* Leaderboard Ad above title */}
       <AdSlot label="728×90 Leaderboard" className="h-[90px] mb-8" />
 
       <div className="flex flex-col lg:flex-row gap-8">
         {/* Main Content */}
         <div className="flex-1 min-w-0">
           <div className="mb-8">
-            <h1 className="text-2xl md:text-3xl font-bold tracking-tight text-foreground">{title}</h1>
+            <h1 className="text-2xl md:text-3xl font-bold tracking-tight text-foreground font-display">{title}</h1>
             <p className="mt-2 text-muted-foreground max-w-2xl">{description}</p>
           </div>
 
           {/* Interactive Tool Card */}
-          <div className="surface-elevated rounded-xl p-6 md:p-8 mb-10">
+          <div className="rounded-2xl border border-border bg-card p-6 md:p-8 mb-10 shadow-sm">
             {children}
           </div>
 
-          {/* SEO Content Sections */}
+          {/* SEO Content */}
           {howToUse && (
             <section className="mb-8">
-              <h2 className="text-xl font-semibold text-foreground mb-3">How to Use This Calculator</h2>
+              <h2 className="text-xl font-semibold text-foreground mb-3 font-display">How to Use This Calculator</h2>
               <p className="text-muted-foreground leading-relaxed">{howToUse}</p>
             </section>
           )}
 
           {understandingTitle && understandingContent && (
             <section className="mb-8">
-              <h2 className="text-xl font-semibold text-foreground mb-3">{understandingTitle}</h2>
+              <h2 className="text-xl font-semibold text-foreground mb-3 font-display">{understandingTitle}</h2>
               <p className="text-muted-foreground leading-relaxed">{understandingContent}</p>
             </section>
           )}
 
-          {/* In-Content Ad between Understanding and FAQ */}
           {faqs && faqs.length > 0 && (
             <AdSlot label="In-Content Ad — 728×90" className="h-[90px] mb-8" />
           )}
 
-          {/* FAQ Accordion */}
           {faqs && faqs.length > 0 && (
             <section className="mb-8">
-              <h2 className="text-xl font-semibold text-foreground mb-4">Frequently Asked Questions</h2>
+              <h2 className="text-xl font-semibold text-foreground mb-4 font-display">Frequently Asked Questions</h2>
               <Accordion type="single" collapsible className="w-full">
                 {faqs.map((faq, i) => (
-                  <AccordionItem key={i} value={`faq-${i}`}>
-                    <AccordionTrigger className="text-left">{faq.question}</AccordionTrigger>
+                  <AccordionItem key={i} value={`faq-${i}`} className="border-border">
+                    <AccordionTrigger className="text-left font-medium hover:text-primary transition-colors">{faq.question}</AccordionTrigger>
                     <AccordionContent>
-                      <p className="text-muted-foreground">{faq.answer}</p>
+                      <p className="text-muted-foreground leading-relaxed">{faq.answer}</p>
                     </AccordionContent>
                   </AccordionItem>
                 ))}
@@ -107,7 +104,7 @@ export default function ToolShell({
           )}
 
           {/* Disclaimer */}
-          <section className="mt-10 rounded-lg border border-border bg-muted/50 p-4">
+          <section className="mt-10 rounded-xl border border-border bg-muted/40 p-5">
             <p className="text-xs text-muted-foreground leading-relaxed">
               <span className="font-semibold text-foreground">Disclaimer:</span> The results provided by this calculator are estimates for informational and educational purposes only and do not constitute financial, tax, or legal advice. Please consult a qualified professional before making any financial decisions.
             </p>
@@ -120,14 +117,14 @@ export default function ToolShell({
             <AdSlot label="300×600 Half Page" className="min-h-[600px]" />
 
             {relatedTools && relatedTools.length > 0 && (
-              <div className="surface-elevated rounded-xl p-5">
-                <h3 className="font-semibold text-foreground mb-3">Related Tools</h3>
-                <ul className="space-y-2">
+              <div className="rounded-2xl border border-border bg-card p-5">
+                <h3 className="font-semibold text-foreground mb-3 font-display text-sm">Related Tools</h3>
+                <ul className="space-y-2.5">
                   {relatedTools.map((tool) => (
                     <li key={tool.href}>
                       <Link
                         to={tool.href}
-                        className="text-sm text-primary hover:underline"
+                        className="text-sm text-primary hover:underline font-medium"
                       >
                         {tool.title}
                       </Link>
