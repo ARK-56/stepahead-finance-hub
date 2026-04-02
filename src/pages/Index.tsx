@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import {
   Search, Calculator, Receipt, ArrowLeftRight, TrendingUp, BarChart3,
   Wallet, Home, GraduationCap, Car, CreditCard, Target, PiggyBank,
-  DollarSign, Percent, Building, ArrowRight, CheckCircle2, Zap, Shield, Star
+  DollarSign, Percent, Building, ArrowRight, CheckCircle2, Zap, Shield, Star,
+  LineChart, Lock, Sparkles
 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -50,10 +51,10 @@ const categories = [
 const popularTools = tools.slice(0, 6);
 
 const features = [
-  { icon: Zap, title: "Instant Results", description: "Get real-time calculations as you type — no page reloads or waiting." },
-  { icon: Shield, title: "Privacy First", description: "All calculations run in your browser. We never store your financial data." },
-  { icon: Star, title: "Expert-Grade Formulas", description: "Built with industry-standard financial formulas used by CPAs and advisors." },
-  { icon: CheckCircle2, title: "100% Free Forever", description: "No sign-ups, no subscriptions, no hidden fees. Every tool is completely free." },
+  { icon: Zap, title: "Instant Results", description: "Real-time calculations as you type — zero lag, no reloads.", color: "from-[hsl(228,76%,52%)] to-[hsl(228,76%,42%)]" },
+  { icon: Lock, title: "Privacy First", description: "Everything runs locally in your browser. We never touch your data.", color: "from-[hsl(158,64%,42%)] to-[hsl(158,64%,32%)]" },
+  { icon: LineChart, title: "Expert Formulas", description: "Industry-standard math used by CPAs, banks, and financial advisors.", color: "from-[hsl(40,90%,52%)] to-[hsl(40,90%,42%)]" },
+  { icon: Sparkles, title: "100% Free Forever", description: "No sign-ups, no subscriptions, no hidden fees. Every tool, always free.", color: "from-[hsl(340,75%,55%)] to-[hsl(340,75%,45%)]" },
 ];
 
 const faqs = [
@@ -80,67 +81,72 @@ export default function Index() {
 
   return (
     <div>
-      {/* Hero */}
-      <section className="relative overflow-hidden py-24 md:py-36">
-        {/* Layered gradient background */}
+      {/* ─── Hero ─── */}
+      <section className="relative overflow-hidden py-28 md:py-40">
+        {/* Deep finance gradient */}
         <div className="absolute inset-0 hero-gradient" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,hsl(234_89%_75%/0.3),transparent)]" />
-        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent" />
-
-        {/* Floating decorative orbs */}
-        <div className="absolute top-20 left-[10%] w-64 h-64 rounded-full bg-primary-foreground/5 blur-3xl animate-[pulse_6s_ease-in-out_infinite]" />
-        <div className="absolute bottom-10 right-[15%] w-48 h-48 rounded-full bg-primary-foreground/5 blur-3xl animate-[pulse_8s_ease-in-out_infinite_1s]" />
+        {/* Grid pattern overlay */}
+        <div className="absolute inset-0 finance-grid opacity-[0.08]" />
+        {/* Glow accents */}
+        <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] rounded-full bg-[hsl(158,64%,42%,0.08)] blur-[120px]" />
+        <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] rounded-full bg-[hsl(228,76%,62%,0.12)] blur-[100px]" />
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent" />
 
         <div className="container relative text-center">
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary-foreground/15 text-primary-foreground text-sm font-medium mb-6 backdrop-blur-sm border border-primary-foreground/10 animate-fade-in">
-            <Zap className="h-3.5 w-3.5" />
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary-foreground/10 text-primary-foreground/90 text-sm font-medium mb-8 backdrop-blur-sm border border-primary-foreground/10 animate-fade-in">
+            <Sparkles className="h-3.5 w-3.5" />
             19 Free Financial Tools — No Sign-Up Required
           </span>
-          <h1 className="text-4xl md:text-5xl lg:text-7xl font-extrabold tracking-tight text-primary-foreground leading-[1.1] animate-fade-in">
-            Smart Finance Tools,<br className="hidden sm:block" />
-            <span className="relative">
+
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-primary-foreground leading-[1.08] font-display animate-fade-in">
+            Smart Finance Tools,
+            <br className="hidden sm:block" />
+            <span className="relative inline-block mt-1">
               One Step Ahead
-              <svg className="absolute -bottom-2 left-0 w-full h-3 text-primary-foreground/30" viewBox="0 0 200 8" preserveAspectRatio="none">
-                <path d="M0 7 Q50 0, 100 4 T200 2" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
-              </svg>
+              <span className="absolute -bottom-1.5 left-0 w-full h-1 bg-[hsl(158,64%,50%)] rounded-full opacity-60" />
             </span>
           </h1>
-          <p className="mt-6 text-primary-foreground/80 max-w-2xl mx-auto text-lg md:text-xl leading-relaxed animate-fade-in" style={{ animationDelay: "100ms" }}>
-            Professional-grade calculators for loans, taxes, investing, budgeting, and real estate — all free, private, and instant.
+
+          <p className="mt-7 text-primary-foreground/70 max-w-2xl mx-auto text-lg md:text-xl leading-relaxed animate-fade-in" style={{ animationDelay: "100ms" }}>
+            Professional-grade calculators for loans, taxes, investing, budgeting,
+            and real estate — all free, private, and instant.
           </p>
 
-          <div className="mt-10 max-w-lg mx-auto relative animate-fade-in" style={{ animationDelay: "200ms" }}>
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+          {/* Search */}
+          <div className="mt-10 max-w-xl mx-auto relative animate-fade-in" style={{ animationDelay: "200ms" }}>
+            <Search className="absolute left-5 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground/70" />
             <Input
               placeholder="Search 19 financial tools…"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="pl-12 h-14 rounded-full bg-card border-0 shadow-2xl text-base text-foreground placeholder:text-muted-foreground focus-visible:ring-2 focus-visible:ring-primary-foreground/30"
+              className="pl-13 h-14 rounded-2xl bg-card/95 border-0 shadow-2xl text-base text-foreground placeholder:text-muted-foreground focus-visible:ring-2 focus-visible:ring-primary-foreground/20 backdrop-blur-sm"
             />
           </div>
 
-          <div className="mt-6 flex flex-wrap justify-center gap-2 text-sm text-primary-foreground/70 animate-fade-in" style={{ animationDelay: "300ms" }}>
-            <span className="font-medium">Popular:</span>
+          {/* Quick links */}
+          <div className="mt-5 flex flex-wrap justify-center gap-2 text-sm animate-fade-in" style={{ animationDelay: "300ms" }}>
+            <span className="text-primary-foreground/50 font-medium mr-1">Popular:</span>
             {["Compound Interest", "Debt Payoff", "Tax Bracket", "Retirement"].map(name => {
               const tool = tools.find(t => t.title.includes(name));
               return tool ? (
-                <Link key={tool.href} to={tool.href} className="px-3 py-1 rounded-full bg-primary-foreground/10 hover:bg-primary-foreground/20 transition-colors">
+                <Link key={tool.href} to={tool.href} className="px-3 py-1 rounded-full bg-primary-foreground/8 hover:bg-primary-foreground/15 text-primary-foreground/70 hover:text-primary-foreground transition-all text-xs font-medium border border-primary-foreground/8">
                   {name}
                 </Link>
               ) : null;
             })}
           </div>
 
-          {/* Stats bar */}
-          <div className="mt-12 flex flex-wrap justify-center gap-8 md:gap-16 animate-fade-in" style={{ animationDelay: "400ms" }}>
+          {/* Stats */}
+          <div className="mt-14 flex justify-center gap-12 md:gap-20 animate-fade-in" style={{ animationDelay: "400ms" }}>
             {[
               { value: "19", label: "Free Tools" },
-              { value: "100%", label: "Private" },
+              { value: "100%", label: "Private & Secure" },
               { value: "0", label: "Sign-ups Needed" },
-            ].map(stat => (
+            ].map((stat, i) => (
               <div key={stat.label} className="text-center">
-                <div className="text-2xl md:text-3xl font-extrabold text-primary-foreground">{stat.value}</div>
-                <div className="text-xs text-primary-foreground/60 mt-0.5">{stat.label}</div>
+                <div className="text-3xl md:text-4xl font-extrabold text-primary-foreground font-display">{stat.value}</div>
+                <div className="text-xs text-primary-foreground/50 mt-1 font-medium uppercase tracking-wider">{stat.label}</div>
+                {i < 2 && <div className="hidden md:block" />}
               </div>
             ))}
           </div>
@@ -148,70 +154,69 @@ export default function Index() {
       </section>
 
       {/* Leaderboard Ad */}
-      <div className="container mt-8">
-        <div className="ad-slot rounded-lg p-3 flex items-center justify-center h-[90px] text-muted-foreground text-sm">
-          <span className="text-xs">Advertisement — 728×90 Leaderboard</span>
+      <div className="container -mt-4 relative z-10">
+        <div className="ad-slot rounded-xl p-3 flex items-center justify-center h-[90px] text-muted-foreground text-xs">
+          Advertisement — 728×90 Leaderboard
         </div>
       </div>
 
-      {/* Why 1StepAhead */}
-      <section className="container mt-16">
-        <div className="text-center mb-12">
-          <span className="inline-block px-3 py-1 rounded-full bg-accent text-accent-foreground text-xs font-semibold uppercase tracking-wider mb-3">
+      {/* ─── Why 1StepAhead ─── */}
+      <section className="container mt-20">
+        <div className="text-center mb-14">
+          <span className="inline-block px-3 py-1 rounded-full bg-accent text-accent-foreground text-xs font-semibold uppercase tracking-widest mb-4">
             Why Choose Us
           </span>
-          <h2 className="text-2xl md:text-4xl font-bold text-foreground">
-            Built for <span className="text-primary">Smarter</span> Decisions
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground font-display">
+            Built for <span className="text-gradient">Smarter</span> Decisions
           </h2>
-          <p className="mt-3 text-muted-foreground max-w-xl mx-auto text-base">
+          <p className="mt-3 text-muted-foreground max-w-lg mx-auto">
             Trusted by thousands of users to make confident financial decisions every day.
           </p>
         </div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {features.map((f, i) => (
             <div
               key={f.title}
-              className="group relative surface-elevated rounded-2xl p-7 text-center hover-scale animate-fade-in overflow-hidden"
+              className="group relative rounded-2xl border border-border bg-card p-7 text-center hover-lift animate-fade-in overflow-hidden"
               style={{ animationDelay: `${i * 80}ms` }}
             >
-              {/* Subtle gradient accent on hover */}
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl" />
-              <div className="relative">
-                <div className="h-14 w-14 rounded-2xl bg-accent flex items-center justify-center mx-auto mb-5 group-hover:bg-primary/10 transition-colors duration-300">
-                  <f.icon className="h-7 w-7 text-accent-foreground group-hover:text-primary transition-colors duration-300" />
-                </div>
-                <h3 className="font-bold text-foreground mb-2 text-base">{f.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{f.description}</p>
+              <div className={`h-12 w-12 rounded-xl bg-gradient-to-br ${f.color} flex items-center justify-center mx-auto mb-5 shadow-lg`}>
+                <f.icon className="h-6 w-6 text-white" />
               </div>
+              <h3 className="font-bold text-foreground mb-2 font-display">{f.title}</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">{f.description}</p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Popular Tools */}
-      <section className="container mt-16">
-        <div className="flex items-center justify-between mb-6">
-          <h2 className="text-2xl md:text-3xl font-bold text-foreground">Most Popular Tools</h2>
-          <Button variant="ghost" size="sm" className="text-primary" onClick={() => { setActiveCategory("All"); document.getElementById("all-tools")?.scrollIntoView({ behavior: "smooth" }); }}>
+      {/* ─── Popular Tools ─── */}
+      <section className="container mt-20">
+        <div className="flex items-end justify-between mb-8">
+          <div>
+            <span className="text-xs font-semibold uppercase tracking-widest text-primary mb-2 block">Most Used</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground font-display">Popular Tools</h2>
+          </div>
+          <Button variant="ghost" size="sm" className="text-primary font-semibold" onClick={() => { setActiveCategory("All"); document.getElementById("all-tools")?.scrollIntoView({ behavior: "smooth" }); }}>
             View all <ArrowRight className="h-4 w-4 ml-1" />
           </Button>
         </div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {popularTools.map((tool) => (
             <Link
               key={tool.href}
               to={tool.href}
-              className="surface-elevated rounded-xl p-6 group hover:ring-2 hover:ring-primary/20 transition-all"
+              className="group relative rounded-2xl border border-border bg-card p-6 hover-lift transition-all hover:border-primary/30"
             >
-              <div className="flex items-center gap-3 mb-3">
-                <div className="h-10 w-10 rounded-lg bg-accent flex items-center justify-center">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="h-10 w-10 rounded-xl bg-accent flex items-center justify-center shrink-0">
                   <tool.icon className="h-5 w-5 text-accent-foreground" />
                 </div>
-                <span className="text-xs font-medium text-muted-foreground">{tool.category}</span>
+                <span className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">{tool.category}</span>
               </div>
-              <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors">{tool.title}</h3>
-              <p className="mt-1 text-sm text-muted-foreground">{tool.description}</p>
-              <span className="inline-flex items-center mt-3 text-sm font-medium text-primary opacity-0 group-hover:opacity-100 transition-opacity">
+              <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors font-display text-[15px]">{tool.title}</h3>
+              <p className="mt-1.5 text-sm text-muted-foreground leading-relaxed">{tool.description}</p>
+              <span className="inline-flex items-center mt-4 text-sm font-semibold text-primary opacity-0 group-hover:opacity-100 transition-opacity">
                 Try it free <ArrowRight className="h-3.5 w-3.5 ml-1" />
               </span>
             </Link>
@@ -220,87 +225,99 @@ export default function Index() {
       </section>
 
       {/* In-content Ad */}
-      <div className="container mt-12">
-        <div className="ad-slot rounded-lg p-3 flex items-center justify-center h-[90px] text-muted-foreground text-sm">
-          <span className="text-xs">Advertisement — 728×90 In-Content</span>
+      <div className="container mt-14">
+        <div className="ad-slot rounded-xl p-3 flex items-center justify-center h-[90px] text-muted-foreground text-xs">
+          Advertisement — 728×90 In-Content
         </div>
       </div>
 
-      {/* Categories */}
-      <section className="container mt-12" id="all-tools">
-        <h2 className="text-2xl md:text-3xl font-bold mb-6 text-foreground">Browse by Category</h2>
+      {/* ─── Browse by Category ─── */}
+      <section className="container mt-14" id="all-tools">
+        <h2 className="text-3xl font-bold mb-8 text-foreground font-display">Browse by Category</h2>
         <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3">
           {categories.map((cat) => (
             <button
               key={cat.name}
               onClick={() => setActiveCategory(cat.name)}
-              className={`surface-elevated rounded-xl p-4 text-center transition-all cursor-pointer ${activeCategory === cat.name ? "ring-2 ring-primary" : "hover:ring-2 hover:ring-primary/20"}`}
+              className={`rounded-xl p-4 text-center transition-all cursor-pointer border ${activeCategory === cat.name ? "border-primary bg-accent shadow-sm" : "border-border bg-card hover:border-primary/30"}`}
             >
-              <cat.icon className="h-5 w-5 mx-auto text-primary mb-1.5" />
-              <div className="text-xs font-medium text-foreground">{cat.name}</div>
-              <div className="text-[10px] text-muted-foreground">{cat.count} tool{cat.count !== 1 ? "s" : ""}</div>
+              <cat.icon className={`h-5 w-5 mx-auto mb-1.5 ${activeCategory === cat.name ? "text-primary" : "text-muted-foreground"}`} />
+              <div className={`text-xs font-semibold ${activeCategory === cat.name ? "text-primary" : "text-foreground"}`}>{cat.name}</div>
+              <div className="text-[10px] text-muted-foreground mt-0.5">{cat.count} tool{cat.count !== 1 ? "s" : ""}</div>
             </button>
           ))}
         </div>
       </section>
 
-      {/* All Tools Grid */}
-      <section className="container mt-12">
-        <h2 className="text-xl font-semibold mb-6 text-foreground">
-          {activeCategory === "All" ? "All Tools" : activeCategory} <span className="text-muted-foreground font-normal text-base">({filtered.length})</span>
+      {/* ─── All Tools Grid ─── */}
+      <section className="container mt-10 pb-4">
+        <h2 className="text-xl font-semibold mb-6 text-foreground font-display">
+          {activeCategory === "All" ? "All Tools" : activeCategory}{" "}
+          <span className="text-muted-foreground font-normal text-base">({filtered.length})</span>
         </h2>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {filtered.map((tool, i) => (
             <Link
               key={tool.href}
               to={tool.href}
-              className="surface-elevated rounded-xl p-6 group hover:ring-2 hover:ring-primary/20 transition-all animate-fade-in"
+              className="group rounded-2xl border border-border bg-card p-6 hover-lift transition-all hover:border-primary/30 animate-fade-in"
               style={{ animationDelay: `${i * 40}ms` }}
             >
-              <div className="flex items-center gap-3 mb-3">
-                <div className="h-10 w-10 rounded-lg bg-accent flex items-center justify-center">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="h-10 w-10 rounded-xl bg-accent flex items-center justify-center shrink-0">
                   <tool.icon className="h-5 w-5 text-accent-foreground" />
                 </div>
-                <span className="text-xs font-medium text-muted-foreground">{tool.category}</span>
+                <span className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">{tool.category}</span>
               </div>
-              <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors">{tool.title}</h3>
-              <p className="mt-1 text-sm text-muted-foreground">{tool.description}</p>
+              <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors font-display text-[15px]">{tool.title}</h3>
+              <p className="mt-1.5 text-sm text-muted-foreground leading-relaxed">{tool.description}</p>
             </Link>
           ))}
           {filtered.length === 0 && (
-            <p className="text-muted-foreground col-span-full text-center py-8">No tools match your search.</p>
+            <p className="text-muted-foreground col-span-full text-center py-12">No tools match your search.</p>
           )}
         </div>
       </section>
 
-      {/* FAQ Section */}
-      <section className="container mt-16 pb-4">
+      {/* ─── FAQ ─── */}
+      <section className="container mt-20 pb-4">
         <div className="max-w-3xl mx-auto">
-          <h2 className="text-2xl md:text-3xl font-bold text-foreground text-center mb-2">Frequently Asked Questions</h2>
-          <p className="text-muted-foreground text-center mb-8">Everything you need to know about 1StepAhead's free finance tools.</p>
+          <div className="text-center mb-10">
+            <span className="inline-block px-3 py-1 rounded-full bg-accent text-accent-foreground text-xs font-semibold uppercase tracking-widest mb-4">
+              FAQ
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground font-display">Frequently Asked Questions</h2>
+            <p className="text-muted-foreground mt-3">Everything you need to know about 1StepAhead's free finance tools.</p>
+          </div>
           <Accordion type="single" collapsible className="w-full">
             {faqs.map((faq, i) => (
-              <AccordionItem key={i} value={`faq-${i}`}>
-                <AccordionTrigger className="text-left text-foreground">{faq.q}</AccordionTrigger>
-                <AccordionContent className="text-muted-foreground">{faq.a}</AccordionContent>
+              <AccordionItem key={i} value={`faq-${i}`} className="border-border">
+                <AccordionTrigger className="text-left text-foreground font-medium hover:text-primary transition-colors">{faq.q}</AccordionTrigger>
+                <AccordionContent className="text-muted-foreground leading-relaxed">{faq.a}</AccordionContent>
               </AccordionItem>
             ))}
           </Accordion>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="container mt-12 pb-16">
-        <div className="hero-gradient rounded-2xl p-10 md:p-16 text-center">
-          <h2 className="text-2xl md:text-3xl font-bold text-primary-foreground">Ready to Take Control of Your Finances?</h2>
-          <p className="mt-3 text-primary-foreground/80 max-w-lg mx-auto">
-            Pick any tool and start making smarter money decisions in seconds — completely free.
-          </p>
-          <Button asChild size="lg" className="mt-6 bg-primary-foreground text-primary hover:bg-primary-foreground/90 rounded-full px-8">
-            <Link to="/compound-interest">
-              Get Started <ArrowRight className="h-4 w-4 ml-2" />
-            </Link>
-          </Button>
+      {/* ─── CTA ─── */}
+      <section className="container mt-12 pb-20">
+        <div className="relative hero-gradient rounded-3xl p-12 md:p-20 text-center overflow-hidden">
+          <div className="absolute inset-0 finance-grid opacity-[0.06]" />
+          <div className="absolute top-0 right-0 w-80 h-80 rounded-full bg-[hsl(158,64%,42%,0.1)] blur-[80px]" />
+          <div className="relative">
+            <h2 className="text-3xl md:text-4xl font-bold text-primary-foreground font-display">
+              Ready to Take Control of Your Finances?
+            </h2>
+            <p className="mt-4 text-primary-foreground/70 max-w-lg mx-auto text-lg">
+              Pick any tool and start making smarter money decisions in seconds — completely free.
+            </p>
+            <Button asChild size="lg" className="mt-8 bg-primary-foreground text-primary hover:bg-primary-foreground/90 rounded-full px-10 font-semibold shadow-lg">
+              <Link to="/compound-interest">
+                Get Started <ArrowRight className="h-4 w-4 ml-2" />
+              </Link>
+            </Button>
+          </div>
         </div>
       </section>
     </div>
