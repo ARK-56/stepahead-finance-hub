@@ -106,12 +106,12 @@ export default function RentVsBuyCalculator() {
             <p className="text-xs text-muted-foreground mt-1">How long you plan to stay. 5+ years favors buying.</p>
           </div>
           <div className="grid grid-cols-3 gap-3 pt-4">
-            <div className="rounded-lg bg-accent p-4"><div className="text-xs text-muted-foreground">Monthly Mortgage</div><div className="text-lg font-bold text-foreground">${data.monthlyMortgage.toLocaleString()}</div></div>
-            <div className="rounded-lg bg-accent p-4"><div className="text-xs text-muted-foreground">Total Monthly Own</div><div className="text-lg font-bold text-primary">${data.monthlyOwnership.toLocaleString()}</div></div>
-            <div className="rounded-lg bg-accent p-4"><div className="text-xs text-muted-foreground">Down Payment</div><div className="text-lg font-bold text-foreground">${data.downPayment.toLocaleString()}</div></div>
+            <div className="result-card"><div className="text-xs text-muted-foreground">Monthly Mortgage</div><div className="text-lg font-bold text-foreground">${data.monthlyMortgage.toLocaleString()}</div></div>
+            <div className="result-card-highlight"><div className="text-xs text-muted-foreground">Total Monthly Own</div><div className="text-lg font-bold text-primary">${data.monthlyOwnership.toLocaleString()}</div></div>
+            <div className="result-card"><div className="text-xs text-muted-foreground">Down Payment</div><div className="text-lg font-bold text-foreground">${data.downPayment.toLocaleString()}</div></div>
           </div>
         </div>
-        <div className="h-[350px]">
+        <div className="chart-container h-[350px]">
           <ResponsiveContainer width="100%" height="100%">
             <LineChart data={data.points}>
               <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />

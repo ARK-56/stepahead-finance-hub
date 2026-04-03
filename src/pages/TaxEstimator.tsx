@@ -124,7 +124,7 @@ export default function TaxEstimator() {
               { label: "Federal Income Tax", value: federalTax, desc: "Based on 2024 progressive brackets" },
               { label: "Total Estimated Tax", value: totalTax, desc: "SE tax + federal income tax" },
             ].map((item) => (
-              <div key={item.label} className="rounded-lg bg-accent p-4">
+              <div key={item.label} className="result-card">
                 <div className="text-xs text-muted-foreground">{item.label}</div>
                 <div className="text-lg font-bold text-foreground">${Math.round(item.value).toLocaleString()}</div>
                 <div className="text-[10px] text-muted-foreground mt-0.5">{item.desc}</div>
@@ -132,12 +132,12 @@ export default function TaxEstimator() {
             ))}
           </div>
           <div className="grid sm:grid-cols-2 gap-4 mb-6">
-            <div className="rounded-lg bg-primary/10 p-4">
+            <div className="result-card-highlight">
               <div className="text-xs text-muted-foreground">Effective Tax Rate</div>
               <div className="text-lg font-bold text-primary">{effectiveRate.toFixed(1)}%</div>
               <div className="text-[10px] text-muted-foreground mt-0.5">Total tax as a % of net income</div>
             </div>
-            <div className="rounded-lg bg-primary/10 p-4">
+            <div className="result-card-highlight">
               <div className="text-xs text-muted-foreground">Quarterly Payment</div>
               <div className="text-lg font-bold text-primary">${Math.round(quarterlyPayment).toLocaleString()}</div>
               <div className="text-[10px] text-muted-foreground mt-0.5">Due Apr 15, Jun 15, Sep 15, Jan 15</div>

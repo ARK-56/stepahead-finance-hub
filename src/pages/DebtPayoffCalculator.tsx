@@ -117,12 +117,12 @@ export default function DebtPayoffCalculator() {
         </div>
 
         <div className="grid sm:grid-cols-3 gap-4">
-          <div className="rounded-lg bg-accent p-4"><div className="text-xs text-muted-foreground">Total Debt</div><div className="text-lg font-bold text-foreground">${totalDebt.toLocaleString()}</div></div>
-          <div className="rounded-lg bg-accent p-4"><div className="text-xs text-muted-foreground">Debt-Free In</div><div className="text-lg font-bold text-primary">{Math.floor(result.months / 12)}y {result.months % 12}m</div></div>
-          <div className="rounded-lg bg-accent p-4"><div className="text-xs text-muted-foreground">Total Interest</div><div className="text-lg font-bold text-foreground">${result.totalInterest.toLocaleString()}</div></div>
+          <div className="result-card"><div className="text-xs text-muted-foreground">Total Debt</div><div className="text-lg font-bold text-foreground">${totalDebt.toLocaleString()}</div></div>
+          <div className="result-card-highlight"><div className="text-xs text-muted-foreground">Debt-Free In</div><div className="text-lg font-bold text-primary">{Math.floor(result.months / 12)}y {result.months % 12}m</div></div>
+          <div className="result-card"><div className="text-xs text-muted-foreground">Total Interest</div><div className="text-lg font-bold text-foreground">${result.totalInterest.toLocaleString()}</div></div>
         </div>
 
-        <div className="h-[350px]">
+        <div className="chart-container h-[350px]">
           <ResponsiveContainer width="100%" height="100%">
             <AreaChart data={result.chart}>
               <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />

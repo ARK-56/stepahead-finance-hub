@@ -101,11 +101,11 @@ export default function CurrencyConverter() {
         ) : error ? (
           <div className="text-sm text-destructive">{error}</div>
         ) : (
-          <div className="rounded-xl bg-accent p-6 space-y-2">
+          <div className="result-card-highlight p-6 space-y-2">
             <div className="text-sm text-muted-foreground">
               {amount.toLocaleString()} {from} =
             </div>
-            <div className="text-3xl font-bold text-foreground">
+            <div className="text-3xl font-bold text-primary">
               {Number(converted).toLocaleString(undefined, { minimumFractionDigits: 2 })} {to}
             </div>
             <div className="text-xs text-muted-foreground">

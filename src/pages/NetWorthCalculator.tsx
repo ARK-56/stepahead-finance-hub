@@ -72,12 +72,12 @@ export default function NetWorthCalculator() {
             <div><Label className="text-xs">Other Debts</Label><Input type="number" value={otherDebts} onChange={(e) => setOtherDebts(+e.target.value)} min={0} /></div>
           </div>
           <div className="grid grid-cols-3 gap-3 pt-4">
-            <div className="rounded-lg bg-accent p-4"><div className="text-xs text-muted-foreground">Total Assets</div><div className="text-lg font-bold text-foreground">${result.totalAssets.toLocaleString()}</div></div>
-            <div className="rounded-lg bg-accent p-4"><div className="text-xs text-muted-foreground">Total Liabilities</div><div className="text-lg font-bold text-foreground">${result.totalLiabilities.toLocaleString()}</div></div>
-            <div className={`rounded-lg p-4 ${result.netWorth >= 0 ? "bg-primary/10" : "bg-destructive/10"}`}><div className="text-xs text-muted-foreground">Net Worth</div><div className={`text-lg font-bold ${result.netWorth >= 0 ? "text-primary" : "text-destructive"}`}>${result.netWorth.toLocaleString()}</div></div>
+            <div className="result-card"><div className="text-xs text-muted-foreground">Total Assets</div><div className="text-lg font-bold text-foreground">${result.totalAssets.toLocaleString()}</div></div>
+            <div className="result-card"><div className="text-xs text-muted-foreground">Total Liabilities</div><div className="text-lg font-bold text-foreground">${result.totalLiabilities.toLocaleString()}</div></div>
+            <div className={`result-card-highlight ${result.netWorth < 0 ? '!border-destructive/20' : ''}`}><div className="text-xs text-muted-foreground">Net Worth</div><div className={`text-lg font-bold ${result.netWorth >= 0 ? "text-primary" : "text-destructive"}`}>${result.netWorth.toLocaleString()}</div></div>
           </div>
         </div>
-        <div className="h-[350px]">
+        <div className="chart-container h-[350px]">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart data={result.chart}>
               <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />

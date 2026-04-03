@@ -90,10 +90,10 @@ export default function TaxBracketCalculator() {
             </Select>
           </div>
           <div className="grid grid-cols-2 gap-3 pt-4">
-            <div className="rounded-lg bg-accent p-4"><div className="text-xs text-muted-foreground">Total Federal Tax</div><div className="text-lg font-bold text-foreground">${result.totalTax.toLocaleString()}</div></div>
-            <div className="rounded-lg bg-accent p-4"><div className="text-xs text-muted-foreground">Effective Rate</div><div className="text-lg font-bold text-primary">{result.effectiveRate.toFixed(1)}%</div></div>
-            <div className="rounded-lg bg-accent p-4"><div className="text-xs text-muted-foreground">Marginal Rate</div><div className="text-lg font-bold text-foreground">{result.marginalRate}%</div></div>
-            <div className="rounded-lg bg-accent p-4"><div className="text-xs text-muted-foreground">After-Tax Income</div><div className="text-lg font-bold text-foreground">${result.afterTax.toLocaleString()}</div></div>
+            <div className="result-card"><div className="text-xs text-muted-foreground">Total Federal Tax</div><div className="text-lg font-bold text-foreground">${result.totalTax.toLocaleString()}</div></div>
+            <div className="result-card-highlight"><div className="text-xs text-muted-foreground">Effective Rate</div><div className="text-lg font-bold text-primary">{result.effectiveRate.toFixed(1)}%</div></div>
+            <div className="result-card"><div className="text-xs text-muted-foreground">Marginal Rate</div><div className="text-lg font-bold text-foreground">{result.marginalRate}%</div></div>
+            <div className="result-card"><div className="text-xs text-muted-foreground">After-Tax Income</div><div className="text-lg font-bold text-foreground">${result.afterTax.toLocaleString()}</div></div>
           </div>
           <div className="space-y-1 text-sm">
             {result.breakdown.map((b, i) => (
@@ -104,7 +104,7 @@ export default function TaxBracketCalculator() {
             ))}
           </div>
         </div>
-        <div className="h-[350px]">
+        <div className="chart-container h-[350px]">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart data={result.breakdown}>
               <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />

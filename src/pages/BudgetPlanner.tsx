@@ -64,12 +64,12 @@ export default function BudgetPlanner() {
             <p className="text-xs text-muted-foreground mt-1">Dining, entertainment, shopping, hobbies, subscriptions.</p>
           </div>
           <div className="grid grid-cols-3 gap-3 pt-4">
-            <div className="rounded-lg bg-accent p-4"><div className="text-xs text-muted-foreground">Needs</div><div className="text-lg font-bold text-foreground">${data.needs.toLocaleString()}</div></div>
-            <div className="rounded-lg bg-accent p-4"><div className="text-xs text-muted-foreground">Wants</div><div className="text-lg font-bold text-primary">${data.wants.toLocaleString()}</div></div>
-            <div className="rounded-lg bg-accent p-4"><div className="text-xs text-muted-foreground">Savings ({data.savingsPct}%)</div><div className="text-lg font-bold text-foreground">${data.savings.toLocaleString()}</div></div>
+            <div className="result-card"><div className="text-xs text-muted-foreground">Needs</div><div className="text-lg font-bold text-foreground">${data.needs.toLocaleString()}</div></div>
+            <div className="result-card-highlight"><div className="text-xs text-muted-foreground">Wants</div><div className="text-lg font-bold text-primary">${data.wants.toLocaleString()}</div></div>
+            <div className="result-card"><div className="text-xs text-muted-foreground">Savings ({data.savingsPct}%)</div><div className="text-lg font-bold text-foreground">${data.savings.toLocaleString()}</div></div>
           </div>
         </div>
-        <div className="h-[350px]">
+        <div className="chart-container h-[350px]">
           <ResponsiveContainer width="100%" height="100%">
             <PieChart>
               <Pie data={data.chart} cx="50%" cy="50%" outerRadius={130} dataKey="value" label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}>

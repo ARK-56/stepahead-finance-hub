@@ -98,13 +98,13 @@ export default function CostOfLivingCalculator() {
             </Select>
           </div>
           <div className="grid grid-cols-2 gap-3 pt-4">
-            <div className="rounded-lg bg-primary/10 p-4"><div className="text-xs text-muted-foreground">Equivalent Salary Needed</div><div className="text-lg font-bold text-primary">${result.equivalentSalary.toLocaleString()}</div></div>
-            <div className={`rounded-lg p-4 ${result.pctChange >= 0 ? "bg-destructive/10" : "bg-primary/10"}`}><div className="text-xs text-muted-foreground">Cost Difference</div><div className="text-lg font-bold">{result.pctChange >= 0 ? "+" : ""}{result.pctChange.toFixed(1)}%</div></div>
-            <div className="rounded-lg bg-accent p-4"><div className="text-xs text-muted-foreground">Salary Difference</div><div className="text-lg font-bold text-foreground">{result.difference >= 0 ? "+" : ""}${result.difference.toLocaleString()}</div></div>
-            <div className="rounded-lg bg-accent p-4"><div className="text-xs text-muted-foreground">Current Salary</div><div className="text-lg font-bold text-foreground">${salary.toLocaleString()}</div></div>
+            <div className="result-card-highlight"><div className="text-xs text-muted-foreground">Equivalent Salary Needed</div><div className="text-lg font-bold text-primary">${result.equivalentSalary.toLocaleString()}</div></div>
+            <div className={`result-card ${result.pctChange >= 0 ? '!border-destructive/20' : ''}`}><div className="text-xs text-muted-foreground">Cost Difference</div><div className="text-lg font-bold">{result.pctChange >= 0 ? "+" : ""}{result.pctChange.toFixed(1)}%</div></div>
+            <div className="result-card"><div className="text-xs text-muted-foreground">Salary Difference</div><div className="text-lg font-bold text-foreground">{result.difference >= 0 ? "+" : ""}${result.difference.toLocaleString()}</div></div>
+            <div className="result-card"><div className="text-xs text-muted-foreground">Current Salary</div><div className="text-lg font-bold text-foreground">${salary.toLocaleString()}</div></div>
           </div>
         </div>
-        <div className="h-[350px]">
+        <div className="chart-container h-[350px]">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart data={result.categories}>
               <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
