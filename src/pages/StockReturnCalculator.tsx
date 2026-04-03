@@ -81,13 +81,13 @@ export default function StockReturnCalculator() {
             <p className="text-xs text-muted-foreground mt-1">Needed to calculate annualized (CAGR) return.</p>
           </div>
           <div className="grid grid-cols-2 gap-3 pt-4">
-            <div className="rounded-lg bg-accent p-4"><div className="text-xs text-muted-foreground">Total Return</div><div className="text-lg font-bold text-primary">{result.totalReturnPct.toFixed(1)}%</div></div>
-            <div className="rounded-lg bg-accent p-4"><div className="text-xs text-muted-foreground">Annualized (CAGR)</div><div className="text-lg font-bold text-foreground">{result.annualized.toFixed(1)}%</div></div>
-            <div className="rounded-lg bg-accent p-4"><div className="text-xs text-muted-foreground">Capital Gain</div><div className="text-lg font-bold text-foreground">${result.capitalGain.toLocaleString()}</div></div>
-            <div className="rounded-lg bg-accent p-4"><div className="text-xs text-muted-foreground">Total Invested</div><div className="text-lg font-bold text-foreground">${result.invested.toLocaleString()}</div></div>
+            <div className="result-card-highlight"><div className="text-xs text-muted-foreground">Total Return</div><div className="text-lg font-bold text-primary">{result.totalReturnPct.toFixed(1)}%</div></div>
+            <div className="result-card"><div className="text-xs text-muted-foreground">Annualized (CAGR)</div><div className="text-lg font-bold text-foreground">{result.annualized.toFixed(1)}%</div></div>
+            <div className="result-card"><div className="text-xs text-muted-foreground">Capital Gain</div><div className="text-lg font-bold text-foreground">${result.capitalGain.toLocaleString()}</div></div>
+            <div className="result-card"><div className="text-xs text-muted-foreground">Total Invested</div><div className="text-lg font-bold text-foreground">${result.invested.toLocaleString()}</div></div>
           </div>
         </div>
-        <div className="h-[350px]">
+        <div className="chart-container h-[350px]">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart data={result.chart}>
               <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />

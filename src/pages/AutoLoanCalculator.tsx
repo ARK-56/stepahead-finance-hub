@@ -75,12 +75,12 @@ export default function AutoLoanCalculator() {
             <p className="text-xs text-muted-foreground mt-1">4–5 years is the sweet spot for cost vs. payment.</p>
           </div>
           <div className="grid grid-cols-3 gap-3 pt-4">
-            <div className="rounded-lg bg-accent p-4"><div className="text-xs text-muted-foreground">Monthly Payment</div><div className="text-lg font-bold text-foreground">${data.payment.toLocaleString()}</div></div>
-            <div className="rounded-lg bg-accent p-4"><div className="text-xs text-muted-foreground">Total Interest</div><div className="text-lg font-bold text-primary">${data.totalInterest.toLocaleString()}</div></div>
-            <div className="rounded-lg bg-accent p-4"><div className="text-xs text-muted-foreground">Loan Amount</div><div className="text-lg font-bold text-foreground">${data.loanAmount.toLocaleString()}</div></div>
+            <div className="result-card-highlight"><div className="text-xs text-muted-foreground">Monthly Payment</div><div className="text-lg font-bold text-primary">${data.payment.toLocaleString()}</div></div>
+            <div className="result-card"><div className="text-xs text-muted-foreground">Total Interest</div><div className="text-lg font-bold text-foreground">${data.totalInterest.toLocaleString()}</div></div>
+            <div className="result-card"><div className="text-xs text-muted-foreground">Loan Amount</div><div className="text-lg font-bold text-foreground">${data.loanAmount.toLocaleString()}</div></div>
           </div>
         </div>
-        <div className="h-[350px]">
+        <div className="chart-container h-[350px]">
           <ResponsiveContainer width="100%" height="100%">
             <AreaChart data={data.points}>
               <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />

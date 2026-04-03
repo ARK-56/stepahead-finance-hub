@@ -74,13 +74,13 @@ export default function InvestmentGoalCalculator() {
             <p className="text-xs text-muted-foreground mt-1">More time = lower monthly savings needed.</p>
           </div>
           <div className="grid grid-cols-2 gap-4 pt-4">
-            <div className="rounded-lg bg-primary/10 p-4"><div className="text-xs text-muted-foreground">Monthly Savings Needed</div><div className="text-lg font-bold text-primary">${data.monthlyNeeded.toLocaleString()}</div></div>
-            <div className="rounded-lg bg-accent p-4"><div className="text-xs text-muted-foreground">Goal Amount</div><div className="text-lg font-bold text-foreground">${goal.toLocaleString()}</div></div>
-            <div className="rounded-lg bg-accent p-4"><div className="text-xs text-muted-foreground">Total Contributions</div><div className="text-lg font-bold text-foreground">${data.totalContributions.toLocaleString()}</div></div>
-            <div className="rounded-lg bg-accent p-4"><div className="text-xs text-muted-foreground">Interest Earned</div><div className="text-lg font-bold text-foreground">${data.interestEarned.toLocaleString()}</div></div>
+            <div className="result-card-highlight"><div className="text-xs text-muted-foreground">Monthly Savings Needed</div><div className="text-lg font-bold text-primary">${data.monthlyNeeded.toLocaleString()}</div></div>
+            <div className="result-card"><div className="text-xs text-muted-foreground">Goal Amount</div><div className="text-lg font-bold text-foreground">${goal.toLocaleString()}</div></div>
+            <div className="result-card"><div className="text-xs text-muted-foreground">Total Contributions</div><div className="text-lg font-bold text-foreground">${data.totalContributions.toLocaleString()}</div></div>
+            <div className="result-card"><div className="text-xs text-muted-foreground">Interest Earned</div><div className="text-lg font-bold text-foreground">${data.interestEarned.toLocaleString()}</div></div>
           </div>
         </div>
-        <div className="h-[350px]">
+        <div className="chart-container h-[350px]">
           <ResponsiveContainer width="100%" height="100%">
             <AreaChart data={data.points}>
               <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />

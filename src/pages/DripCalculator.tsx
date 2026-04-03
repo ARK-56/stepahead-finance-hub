@@ -87,12 +87,12 @@ export default function DripCalculator() {
             <p className="text-xs text-muted-foreground mt-1">Longer periods amplify the DRIP advantage.</p>
           </div>
           <div className="grid grid-cols-2 gap-3 pt-4">
-            <div className="rounded-lg bg-accent p-4"><div className="text-xs text-muted-foreground">With DRIP</div><div className="text-lg font-bold text-primary">${data.finalWithDrip.toLocaleString()}</div></div>
-            <div className="rounded-lg bg-accent p-4"><div className="text-xs text-muted-foreground">Without DRIP</div><div className="text-lg font-bold text-foreground">${data.finalWithout.toLocaleString()}</div></div>
+            <div className="result-card-highlight"><div className="text-xs text-muted-foreground">With DRIP</div><div className="text-lg font-bold text-primary">${data.finalWithDrip.toLocaleString()}</div></div>
+            <div className="result-card"><div className="text-xs text-muted-foreground">Without DRIP</div><div className="text-lg font-bold text-foreground">${data.finalWithout.toLocaleString()}</div></div>
           </div>
-          <div className="rounded-lg bg-primary/10 p-3 text-center"><span className="text-sm font-medium text-primary">DRIP Advantage: +${data.dripAdvantage.toLocaleString()} · {data.finalShares.toLocaleString()} final shares</span></div>
+          <div className="result-card-highlight p-3 text-center"><span className="text-sm font-medium text-primary">DRIP Advantage: +${data.dripAdvantage.toLocaleString()} · {data.finalShares.toLocaleString()} final shares</span></div>
         </div>
-        <div className="h-[350px]">
+        <div className="chart-container h-[350px]">
           <ResponsiveContainer width="100%" height="100%">
             <AreaChart data={data.points}>
               <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />

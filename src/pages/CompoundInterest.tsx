@@ -73,22 +73,22 @@ export default function CompoundInterest() {
           </div>
 
           <div className="grid grid-cols-3 gap-3 pt-4">
-            <div className="rounded-lg bg-accent p-4">
+            <div className="result-card-highlight">
               <div className="text-xs text-muted-foreground">Total Value</div>
-              <div className="text-lg font-bold text-foreground">${final.total.toLocaleString()}</div>
+              <div className="text-lg font-bold text-primary">${final.total.toLocaleString()}</div>
             </div>
-            <div className="rounded-lg bg-accent p-4">
+            <div className="result-card">
               <div className="text-xs text-muted-foreground">Interest Earned</div>
-              <div className="text-lg font-bold text-primary">${final.interest.toLocaleString()}</div>
+              <div className="text-lg font-bold text-foreground">${final.interest.toLocaleString()}</div>
             </div>
-            <div className="rounded-lg bg-accent p-4">
+            <div className="result-card">
               <div className="text-xs text-muted-foreground">Contributions</div>
               <div className="text-lg font-bold text-foreground">${final.contributions.toLocaleString()}</div>
             </div>
           </div>
         </div>
 
-        <div className="h-[350px]">
+        <div className="chart-container h-[350px]">
           <ResponsiveContainer width="100%" height="100%">
             <AreaChart data={data}>
               <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />

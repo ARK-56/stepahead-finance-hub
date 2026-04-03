@@ -92,12 +92,12 @@ export default function RetirementCalculator() {
             <p className="text-xs text-muted-foreground mt-1">4% is the classic safe withdrawal rate for 30-year retirements.</p>
           </div>
           <div className="grid grid-cols-3 gap-3 pt-4">
-            <div className="rounded-lg bg-accent p-4"><div className="text-xs text-muted-foreground">Nest Egg</div><div className="text-lg font-bold text-foreground">${data.nestEgg.toLocaleString()}</div></div>
-            <div className="rounded-lg bg-accent p-4"><div className="text-xs text-muted-foreground">Annual Income</div><div className="text-lg font-bold text-primary">${data.annualIncome.toLocaleString()}</div></div>
-            <div className="rounded-lg bg-accent p-4"><div className="text-xs text-muted-foreground">Monthly Income</div><div className="text-lg font-bold text-foreground">${data.monthlyIncome.toLocaleString()}</div></div>
+            <div className="result-card-highlight"><div className="text-xs text-muted-foreground">Nest Egg</div><div className="text-lg font-bold text-primary">${data.nestEgg.toLocaleString()}</div></div>
+            <div className="result-card"><div className="text-xs text-muted-foreground">Annual Income</div><div className="text-lg font-bold text-foreground">${data.annualIncome.toLocaleString()}</div></div>
+            <div className="result-card"><div className="text-xs text-muted-foreground">Monthly Income</div><div className="text-lg font-bold text-foreground">${data.monthlyIncome.toLocaleString()}</div></div>
           </div>
         </div>
-        <div className="h-[350px]">
+        <div className="chart-container h-[350px]">
           <ResponsiveContainer width="100%" height="100%">
             <AreaChart data={data.points}>
               <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
