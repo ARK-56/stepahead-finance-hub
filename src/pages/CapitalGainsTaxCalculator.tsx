@@ -111,13 +111,13 @@ export default function CapitalGainsTaxCalculator() {
             </Select>
           </div>
           <div className="grid grid-cols-2 gap-3 pt-4">
-            <div className="rounded-lg bg-accent p-4"><div className="text-xs text-muted-foreground">Capital Gain</div><div className="text-lg font-bold text-foreground">${result.gain.toLocaleString()}</div></div>
-            <div className="rounded-lg bg-accent p-4"><div className="text-xs text-muted-foreground">Tax Rate</div><div className="text-lg font-bold text-primary">{result.taxRate}%</div></div>
-            <div className="rounded-lg bg-accent p-4"><div className="text-xs text-muted-foreground">Tax Owed</div><div className="text-lg font-bold text-foreground">${result.tax.toLocaleString()}</div></div>
-            <div className="rounded-lg bg-accent p-4"><div className="text-xs text-muted-foreground">Net Proceeds</div><div className="text-lg font-bold text-foreground">${result.netProceeds.toLocaleString()}</div></div>
+            <div className="result-card"><div className="text-xs text-muted-foreground">Capital Gain</div><div className="text-lg font-bold text-foreground">${result.gain.toLocaleString()}</div></div>
+            <div className="result-card-highlight"><div className="text-xs text-muted-foreground">Tax Rate</div><div className="text-lg font-bold text-primary">{result.taxRate}%</div></div>
+            <div className="result-card"><div className="text-xs text-muted-foreground">Tax Owed</div><div className="text-lg font-bold text-foreground">${result.tax.toLocaleString()}</div></div>
+            <div className="result-card"><div className="text-xs text-muted-foreground">Net Proceeds</div><div className="text-lg font-bold text-foreground">${result.netProceeds.toLocaleString()}</div></div>
           </div>
         </div>
-        <div className="h-[350px]">
+        <div className="chart-container h-[350px]">
           {result.chart.length > 0 && (
             <ResponsiveContainer width="100%" height="100%">
               <PieChart>
