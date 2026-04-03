@@ -147,4 +147,37 @@
     transform: translateY(-2px);
     box-shadow: 0 8px 24px -4px rgb(0 0 0 / 0.1), 0 2px 8px -2px rgb(0 0 0 / 0.06);
   }
+  .result-card {
+    @apply rounded-xl border border-border/60 bg-card p-4 shadow-sm;
+    position: relative;
+    overflow: hidden;
+  }
+  .result-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, hsl(var(--chart-1)), hsl(var(--chart-3)));
+    opacity: 0.6;
+  }
+  .result-card-highlight {
+    @apply rounded-xl border border-primary/20 p-4 shadow-sm;
+    background: linear-gradient(135deg, hsl(var(--primary) / 0.06), hsl(var(--primary) / 0.02));
+    position: relative;
+    overflow: hidden;
+  }
+  .result-card-highlight::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, hsl(var(--chart-1)), hsl(var(--chart-4)));
+  }
+  .chart-container {
+    @apply rounded-xl border border-border/40 bg-card/50 p-4;
+  }
 }
