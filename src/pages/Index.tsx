@@ -161,147 +161,158 @@ export default function Index() {
       </div>
 
       {/* ─── Why 1StepAhead ─── */}
-      <section className="container mt-20">
-        <div className="text-center mb-14">
-          <span className="inline-block px-3 py-1 rounded-full bg-accent text-accent-foreground text-xs font-semibold uppercase tracking-widest mb-4">
-            Why Choose Us
-          </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground font-display">
-            Built for <span className="text-gradient">Smarter</span> Decisions
-          </h2>
-          <p className="mt-3 text-muted-foreground max-w-lg mx-auto">
-            Trusted by thousands of users to make confident financial decisions every day.
-          </p>
-        </div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {features.map((f, i) => (
-            <div
-              key={f.title}
-              className="group relative rounded-2xl border border-border bg-card p-7 text-center hover-lift animate-fade-in overflow-hidden"
-              style={{ animationDelay: `${i * 80}ms` }}
-            >
-              <div className={`h-12 w-12 rounded-xl bg-gradient-to-br ${f.color} flex items-center justify-center mx-auto mb-5 shadow-lg`}>
-                <f.icon className="h-6 w-6 text-white" />
+      <section className="relative py-20 md:py-28 bg-gradient-to-b from-background via-accent/30 to-background overflow-hidden">
+        <div className="absolute inset-0 finance-grid opacity-[0.04]" />
+        <div className="container relative">
+          <div className="text-center mb-14">
+            <span className="inline-block px-3 py-1 rounded-full bg-accent text-accent-foreground text-xs font-semibold uppercase tracking-widest mb-4">
+              Why Choose Us
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground font-display">
+              Built for <span className="text-gradient">Smarter</span> Decisions
+            </h2>
+            <p className="mt-3 text-muted-foreground max-w-lg mx-auto">
+              Trusted by thousands of users to make confident financial decisions every day.
+            </p>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {features.map((f, i) => (
+              <div
+                key={f.title}
+                className="group relative rounded-2xl border border-border bg-card p-7 text-center hover-lift animate-fade-in overflow-hidden"
+                style={{ animationDelay: `${i * 80}ms` }}
+              >
+                <div className={`h-12 w-12 rounded-xl bg-gradient-to-br ${f.color} flex items-center justify-center mx-auto mb-5 shadow-lg`}>
+                  <f.icon className="h-6 w-6 text-white" />
+                </div>
+                <h3 className="font-bold text-foreground mb-2 font-display">{f.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{f.description}</p>
               </div>
-              <h3 className="font-bold text-foreground mb-2 font-display">{f.title}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">{f.description}</p>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
 
       {/* ─── Popular Tools ─── */}
-      <section className="container mt-20">
-        <div className="flex items-end justify-between mb-8">
-          <div>
-            <span className="text-xs font-semibold uppercase tracking-widest text-primary mb-2 block">Most Used</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground font-display">Popular Tools</h2>
+      <section className="relative py-20 md:py-24 bg-gradient-to-br from-[hsl(228,76%,52%,0.04)] via-background to-[hsl(158,64%,42%,0.04)]">
+        <div className="container">
+          <div className="flex items-end justify-between mb-8">
+            <div>
+              <span className="text-xs font-semibold uppercase tracking-widest text-primary mb-2 block">Most Used</span>
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground font-display">Popular Tools</h2>
+            </div>
+            <Button variant="ghost" size="sm" className="text-primary font-semibold" onClick={() => { setActiveCategory("All"); document.getElementById("all-tools")?.scrollIntoView({ behavior: "smooth" }); }}>
+              View all <ArrowRight className="h-4 w-4 ml-1" />
+            </Button>
           </div>
-          <Button variant="ghost" size="sm" className="text-primary font-semibold" onClick={() => { setActiveCategory("All"); document.getElementById("all-tools")?.scrollIntoView({ behavior: "smooth" }); }}>
-            View all <ArrowRight className="h-4 w-4 ml-1" />
-          </Button>
-        </div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {popularTools.map((tool) => (
-            <Link
-              key={tool.href}
-              to={tool.href}
-              className="group relative rounded-2xl border border-border bg-card p-6 hover-lift transition-all hover:border-primary/30"
-            >
-              <div className="flex items-center gap-3 mb-4">
-                <div className="h-10 w-10 rounded-xl bg-accent flex items-center justify-center shrink-0">
-                  <tool.icon className="h-5 w-5 text-accent-foreground" />
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {popularTools.map((tool) => (
+              <Link
+                key={tool.href}
+                to={tool.href}
+                className="group relative rounded-2xl border border-border bg-card p-6 hover-lift transition-all hover:border-primary/30"
+              >
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="h-10 w-10 rounded-xl bg-accent flex items-center justify-center shrink-0">
+                    <tool.icon className="h-5 w-5 text-accent-foreground" />
+                  </div>
+                  <span className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">{tool.category}</span>
                 </div>
-                <span className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">{tool.category}</span>
-              </div>
-              <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors font-display text-[15px]">{tool.title}</h3>
-              <p className="mt-1.5 text-sm text-muted-foreground leading-relaxed">{tool.description}</p>
-              <span className="inline-flex items-center mt-4 text-sm font-semibold text-primary opacity-0 group-hover:opacity-100 transition-opacity">
-                Try it free <ArrowRight className="h-3.5 w-3.5 ml-1" />
-              </span>
-            </Link>
-          ))}
+                <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors font-display text-[15px]">{tool.title}</h3>
+                <p className="mt-1.5 text-sm text-muted-foreground leading-relaxed">{tool.description}</p>
+                <span className="inline-flex items-center mt-4 text-sm font-semibold text-primary opacity-0 group-hover:opacity-100 transition-opacity">
+                  Try it free <ArrowRight className="h-3.5 w-3.5 ml-1" />
+                </span>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* In-content Ad */}
-      <div className="container mt-14">
+      <div className="container py-8">
         <div className="ad-slot rounded-xl p-3 flex items-center justify-center h-[90px] text-muted-foreground text-xs">
           Advertisement — 728×90 In-Content
         </div>
       </div>
 
       {/* ─── Browse by Category ─── */}
-      <section className="container mt-14" id="all-tools">
-        <h2 className="text-3xl font-bold mb-8 text-foreground font-display">Browse by Category</h2>
-        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3">
-          {categories.map((cat) => (
-            <button
-              key={cat.name}
-              onClick={() => setActiveCategory(cat.name)}
-              className={`rounded-xl p-4 text-center transition-all cursor-pointer border ${activeCategory === cat.name ? "border-primary bg-accent shadow-sm" : "border-border bg-card hover:border-primary/30"}`}
-            >
-              <cat.icon className={`h-5 w-5 mx-auto mb-1.5 ${activeCategory === cat.name ? "text-primary" : "text-muted-foreground"}`} />
-              <div className={`text-xs font-semibold ${activeCategory === cat.name ? "text-primary" : "text-foreground"}`}>{cat.name}</div>
-              <div className="text-[10px] text-muted-foreground mt-0.5">{cat.count} tool{cat.count !== 1 ? "s" : ""}</div>
-            </button>
-          ))}
+      <section className="relative py-20 md:py-24 bg-gradient-to-b from-[hsl(40,90%,52%,0.03)] via-muted/50 to-background" id="all-tools">
+        <div className="container">
+          <h2 className="text-3xl font-bold mb-8 text-foreground font-display">Browse by Category</h2>
+          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3">
+            {categories.map((cat) => (
+              <button
+                key={cat.name}
+                onClick={() => setActiveCategory(cat.name)}
+                className={`rounded-xl p-4 text-center transition-all cursor-pointer border ${activeCategory === cat.name ? "border-primary bg-accent shadow-sm" : "border-border bg-card hover:border-primary/30"}`}
+              >
+                <cat.icon className={`h-5 w-5 mx-auto mb-1.5 ${activeCategory === cat.name ? "text-primary" : "text-muted-foreground"}`} />
+                <div className={`text-xs font-semibold ${activeCategory === cat.name ? "text-primary" : "text-foreground"}`}>{cat.name}</div>
+                <div className="text-[10px] text-muted-foreground mt-0.5">{cat.count} tool{cat.count !== 1 ? "s" : ""}</div>
+              </button>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* ─── All Tools Grid ─── */}
-      <section className="container mt-10 pb-4">
-        <h2 className="text-xl font-semibold mb-6 text-foreground font-display">
-          {activeCategory === "All" ? "All Tools" : activeCategory}{" "}
-          <span className="text-muted-foreground font-normal text-base">({filtered.length})</span>
-        </h2>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {filtered.map((tool, i) => (
-            <Link
-              key={tool.href}
-              to={tool.href}
-              className="group rounded-2xl border border-border bg-card p-6 hover-lift transition-all hover:border-primary/30 animate-fade-in"
-              style={{ animationDelay: `${i * 40}ms` }}
-            >
-              <div className="flex items-center gap-3 mb-4">
-                <div className="h-10 w-10 rounded-xl bg-accent flex items-center justify-center shrink-0">
-                  <tool.icon className="h-5 w-5 text-accent-foreground" />
+      <section className="relative py-16 md:py-20 bg-gradient-to-br from-background via-[hsl(228,76%,52%,0.02)] to-background">
+        <div className="container">
+          <h2 className="text-xl font-semibold mb-6 text-foreground font-display">
+            {activeCategory === "All" ? "All Tools" : activeCategory}{" "}
+            <span className="text-muted-foreground font-normal text-base">({filtered.length})</span>
+          </h2>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {filtered.map((tool, i) => (
+              <Link
+                key={tool.href}
+                to={tool.href}
+                className="group rounded-2xl border border-border bg-card p-6 hover-lift transition-all hover:border-primary/30 animate-fade-in"
+                style={{ animationDelay: `${i * 40}ms` }}
+              >
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="h-10 w-10 rounded-xl bg-accent flex items-center justify-center shrink-0">
+                    <tool.icon className="h-5 w-5 text-accent-foreground" />
+                  </div>
+                  <span className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">{tool.category}</span>
                 </div>
-                <span className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">{tool.category}</span>
-              </div>
-              <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors font-display text-[15px]">{tool.title}</h3>
-              <p className="mt-1.5 text-sm text-muted-foreground leading-relaxed">{tool.description}</p>
-            </Link>
-          ))}
-          {filtered.length === 0 && (
-            <p className="text-muted-foreground col-span-full text-center py-12">No tools match your search.</p>
-          )}
+                <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors font-display text-[15px]">{tool.title}</h3>
+                <p className="mt-1.5 text-sm text-muted-foreground leading-relaxed">{tool.description}</p>
+              </Link>
+            ))}
+            {filtered.length === 0 && (
+              <p className="text-muted-foreground col-span-full text-center py-12">No tools match your search.</p>
+            )}
+          </div>
         </div>
       </section>
 
       {/* ─── FAQ ─── */}
-      <section className="container mt-20 pb-4">
-        <div className="max-w-3xl mx-auto">
-          <div className="text-center mb-10">
-            <span className="inline-block px-3 py-1 rounded-full bg-accent text-accent-foreground text-xs font-semibold uppercase tracking-widest mb-4">
-              FAQ
-            </span>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground font-display">Frequently Asked Questions</h2>
-            <p className="text-muted-foreground mt-3">Everything you need to know about 1StepAhead's free finance tools.</p>
+      <section className="relative py-20 md:py-28 bg-gradient-to-b from-accent/20 via-muted/40 to-background">
+        <div className="container">
+          <div className="max-w-3xl mx-auto">
+            <div className="text-center mb-10">
+              <span className="inline-block px-3 py-1 rounded-full bg-accent text-accent-foreground text-xs font-semibold uppercase tracking-widest mb-4">
+                FAQ
+              </span>
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground font-display">Frequently Asked Questions</h2>
+              <p className="text-muted-foreground mt-3">Everything you need to know about 1StepAhead's free finance tools.</p>
+            </div>
+            <Accordion type="single" collapsible className="w-full">
+              {faqs.map((faq, i) => (
+                <AccordionItem key={i} value={`faq-${i}`} className="border-border">
+                  <AccordionTrigger className="text-left text-foreground font-medium hover:text-primary transition-colors">{faq.q}</AccordionTrigger>
+                  <AccordionContent className="text-muted-foreground leading-relaxed">{faq.a}</AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
           </div>
-          <Accordion type="single" collapsible className="w-full">
-            {faqs.map((faq, i) => (
-              <AccordionItem key={i} value={`faq-${i}`} className="border-border">
-                <AccordionTrigger className="text-left text-foreground font-medium hover:text-primary transition-colors">{faq.q}</AccordionTrigger>
-                <AccordionContent className="text-muted-foreground leading-relaxed">{faq.a}</AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
         </div>
       </section>
 
       {/* ─── CTA ─── */}
-      <section className="container mt-12 pb-20">
+      <section className="container py-20">
         <div className="relative hero-gradient rounded-3xl p-12 md:p-20 text-center overflow-hidden">
           <div className="absolute inset-0 finance-grid opacity-[0.06]" />
           <div className="absolute top-0 right-0 w-80 h-80 rounded-full bg-[hsl(158,64%,42%,0.1)] blur-[80px]" />
