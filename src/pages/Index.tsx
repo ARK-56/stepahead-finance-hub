@@ -223,12 +223,6 @@ export default function Index() {
         </div>
       </section>
 
-      {/* In-content Ad */}
-      <div className="container py-8">
-        <div className="ad-slot rounded-xl p-3 flex items-center justify-center h-[90px] text-muted-foreground text-xs">
-          Advertisement — 728×90 In-Content
-        </div>
-      </div>
 
       {/* ─── Browse by Category ─── */}
       <section className="relative py-20 md:py-24 bg-gradient-to-b from-[hsl(40,90%,52%,0.03)] via-muted/50 to-background" id="all-tools">

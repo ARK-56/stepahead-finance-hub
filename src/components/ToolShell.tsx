@@ -34,12 +34,6 @@ interface ToolShellProps {
   seoSections?: SEOSection[];
 }
 
-const AdSlot = ({ label, className = "" }: { label: string; className?: string }) => (
-  <div className={`ad-slot rounded-xl p-4 flex flex-col items-center justify-center text-muted-foreground text-xs ${className}`}>
-    <span className="font-medium mb-0.5">Ad Space</span>
-    <span>{label}</span>
-  </div>
-);
 
 export default function ToolShell({
   title,
@@ -95,7 +89,7 @@ export default function ToolShell({
                   </div>
                 )}
 
-                <AdSlot label="300×250 Medium Rectangle" className="min-h-[250px]" />
+                
               </div>
             </aside>
           </div>

@@ -59,7 +59,7 @@
     --chart-3: 158 64% 42%;
     --chart-4: 40 90% 52%;
     --chart-5: 340 75% 55%;
-    --ad-bg: 220 14% 96%;
+    
   }
 
   .dark {
@@ -98,7 +98,7 @@
     --success-foreground: 158 64% 92%;
     --gold: 40 80% 48%;
     --gold-foreground: 40 80% 92%;
-    --ad-bg: 220 30% 11%;
+    
   }
 }
 
@@ -123,10 +123,6 @@
     background: hsl(var(--surface-elevated) / 0.7);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-  }
-  .ad-slot {
-    background: hsl(var(--ad-bg));
-    border: 1px dashed hsl(var(--border));
   }
   .text-gradient {
     background: linear-gradient(135deg, hsl(var(--hero-gradient-from)), hsl(var(--success)));
