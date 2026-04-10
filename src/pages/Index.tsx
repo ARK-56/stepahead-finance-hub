@@ -153,12 +153,6 @@ export default function Index() {
         </div>
       </section>
 
-      {/* Leaderboard Ad */}
-      <div className="container -mt-4 relative z-10">
-        <div className="ad-slot rounded-xl p-3 flex items-center justify-center h-[90px] text-muted-foreground text-xs">
-          Advertisement — 728×90 Leaderboard
-        </div>
-      </div>
 
       {/* ─── Why 1StepAhead ─── */}
       <section className="relative py-20 md:py-28 bg-gradient-to-b from-background via-accent/30 to-background overflow-hidden">
