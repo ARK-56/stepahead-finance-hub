@@ -124,10 +124,6 @@
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
   }
-  .ad-slot {
-    background: hsl(var(--ad-bg));
-    border: 1px dashed hsl(var(--border));
-  }
   .text-gradient {
     background: linear-gradient(135deg, hsl(var(--hero-gradient-from)), hsl(var(--success)));
     -webkit-background-clip: text;
