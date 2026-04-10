@@ -57,7 +57,6 @@ export default function ToolShell({
       <div className="relative overflow-hidden bg-gradient-to-br from-[hsl(228,76%,52%,0.06)] via-background to-[hsl(158,64%,42%,0.04)]">
         <div className="absolute inset-0 finance-grid opacity-[0.03]" />
         <div className="container relative py-8 md:py-12">
-          <AdSlot label="728×90 Leaderboard" className="h-[90px] mb-8" />
 
           <div className="flex flex-col lg:flex-row gap-8">
             {/* Main Content */}
@@ -77,8 +76,6 @@ export default function ToolShell({
             {/* Sticky Sidebar */}
             <aside className="w-full lg:w-[300px] shrink-0">
               <div className="lg:sticky lg:top-20 space-y-6">
-                <AdSlot label="300×600 Half Page" className="min-h-[600px]" />
-
                 {relatedTools && relatedTools.length > 0 && (
                   <div className="rounded-2xl border border-border bg-card p-5 shadow-sm">
                     <h3 className="font-semibold text-foreground mb-3 font-display text-sm">Related Tools</h3>
@@ -135,32 +132,26 @@ export default function ToolShell({
       )}
 
       {faqs && faqs.length > 0 && (
-        <>
-          <div className="container">
-            <AdSlot label="In-Content Ad — 728×90" className="h-[90px]" />
-          </div>
-
-          <section className="bg-gradient-to-b from-[hsl(158,64%,42%,0.03)] via-muted/30 to-background">
-            <div className="container py-12">
-              <div className="max-w-3xl">
-                <h2 className="text-xl font-semibold text-foreground mb-4 font-display flex items-center gap-2">
-                  <span className="h-5 w-1 rounded-full bg-gradient-to-b from-[hsl(var(--chart-3))] to-[hsl(var(--chart-5))]" />
-                  Frequently Asked Questions
-                </h2>
-                <Accordion type="single" collapsible className="w-full">
-                  {faqs.map((faq, i) => (
-                    <AccordionItem key={i} value={`faq-${i}`} className="border-border">
-                      <AccordionTrigger className="text-left font-medium hover:text-primary transition-colors">{faq.question}</AccordionTrigger>
-                      <AccordionContent>
-                        <p className="text-muted-foreground leading-relaxed">{faq.answer}</p>
-                      </AccordionContent>
-                    </AccordionItem>
-                  ))}
-                </Accordion>
-              </div>
+        <section className="bg-gradient-to-b from-[hsl(158,64%,42%,0.03)] via-muted/30 to-background">
+          <div className="container py-12">
+            <div className="max-w-3xl">
+              <h2 className="text-xl font-semibold text-foreground mb-4 font-display flex items-center gap-2">
+                <span className="h-5 w-1 rounded-full bg-gradient-to-b from-[hsl(var(--chart-3))] to-[hsl(var(--chart-5))]" />
+                Frequently Asked Questions
+              </h2>
+              <Accordion type="single" collapsible className="w-full">
+                {faqs.map((faq, i) => (
+                  <AccordionItem key={i} value={`faq-${i}`} className="border-border">
+                    <AccordionTrigger className="text-left font-medium hover:text-primary transition-colors">{faq.question}</AccordionTrigger>
+                    <AccordionContent>
+                      <p className="text-muted-foreground leading-relaxed">{faq.answer}</p>
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
             </div>
-          </section>
-        </>
+          </div>
+        </section>
       )}
 
       {/* Disclaimer */}
