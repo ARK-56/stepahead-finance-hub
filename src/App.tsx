@@ -25,6 +25,9 @@ import NetWorthCalculator from "./pages/NetWorthCalculator";
 import CostOfLivingCalculator from "./pages/CostOfLivingCalculator";
 import RentVsBuyCalculator from "./pages/RentVsBuyCalculator";
 import MortgageAmortizationCalculator from "./pages/MortgageAmortizationCalculator";
+import About from "./pages/About";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsOfService from "./pages/TermsOfService";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -58,6 +61,9 @@ const App = () => (
             <Route path="/cost-of-living" element={<CostOfLivingCalculator />} />
             <Route path="/rent-vs-buy" element={<RentVsBuyCalculator />} />
             <Route path="/mortgage-amortization" element={<MortgageAmortizationCalculator />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/privacy" element={<PrivacyPolicy />} />
+            <Route path="/terms" element={<TermsOfService />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
