@@ -223,8 +223,34 @@ export default function Index() {
         </div>
       </section>
 
+      {/* ─── Educational Content Section ─── */}
+      <section className="relative py-20 md:py-24 bg-gradient-to-b from-[hsl(158,64%,42%,0.04)] via-background to-background">
+        <div className="container">
+          <div className="max-w-3xl mx-auto">
+            <span className="inline-block px-3 py-1 rounded-full bg-accent text-accent-foreground text-xs font-semibold uppercase tracking-widest mb-4">
+              Financial Literacy
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground font-display mb-8">
+              Why Understanding Your Money Matters
+            </h2>
+            <div className="space-y-6 text-muted-foreground leading-relaxed">
+              <p>
+                According to the National Financial Educators Council, the average American lost over $1,500 in 2023 due to a lack of financial knowledge — from choosing the wrong loan terms to missing tax deductions they were entitled to. Across the U.S., that adds up to nearly $400 billion in preventable losses every year.
+              </p>
+              <p>
+                The problem isn't that people are bad with money — it's that the tools to make smart financial decisions have traditionally been locked behind paywalls, complicated spreadsheets, or expensive professional consultations. A first-time homebuyer shouldn't need to hire a financial planner just to understand whether renting or buying makes more sense for their situation. A freelancer shouldn't need an accountant just to estimate their quarterly tax payments.
+              </p>
+              <p>
+                That's exactly why we built 1StepAhead. Every tool on this site uses the same industry-standard formulas employed by CPAs, banks, and financial advisors — wrapped in a clean interface that gives you answers in seconds. Whether you're calculating compound interest to understand long-term investing, comparing debt payoff strategies, or estimating your capital gains tax before selling an investment, these tools help you make informed decisions with confidence.
+              </p>
+              <p>
+                Our calculators cover the five pillars of personal finance: <strong>borrowing</strong> (understanding loans, interest rates, and repayment), <strong>saving and investing</strong> (compound growth, dividend reinvestment, and goal planning), <strong>taxes</strong> (brackets, deductions, and self-employment obligations), <strong>budgeting</strong> (spending allocation and net worth tracking), and <strong>housing</strong> (mortgage amortization and rent-vs-buy analysis). Together, they provide a comprehensive toolkit for every stage of your financial life.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-      {/* ─── Browse by Category ─── */}
       <section className="relative py-20 md:py-24 bg-gradient-to-b from-[hsl(40,90%,52%,0.03)] via-muted/50 to-background" id="all-tools">
         <div className="container">
           <h2 className="text-3xl font-bold mb-8 text-foreground font-display">Browse by Category</h2>
