@@ -89,7 +89,7 @@ export default function ToolShell({
                   </div>
                 )}
 
-                <AdSlot label="300×250 Medium Rectangle" className="min-h-[250px]" />
+                
               </div>
             </aside>
           </div>
