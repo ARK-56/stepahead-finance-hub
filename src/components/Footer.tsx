@@ -83,6 +83,11 @@ export default function Footer() {
           <p className="text-xs text-muted-foreground">
             © {new Date().getFullYear()} 1StepAhead. All rights reserved.
           </p>
+          <div className="flex items-center gap-4">
+            <Link to="/about" className="text-xs text-muted-foreground hover:text-primary transition-colors">About</Link>
+            <Link to="/privacy" className="text-xs text-muted-foreground hover:text-primary transition-colors">Privacy Policy</Link>
+            <Link to="/terms" className="text-xs text-muted-foreground hover:text-primary transition-colors">Terms of Service</Link>
+          </div>
           <p className="text-xs text-muted-foreground">
             Results are estimates for educational purposes only. Not financial advice.
           </p>
