@@ -82,9 +82,11 @@ export default function Index() {
   return (
     <div>
       {/* ─── Hero ─── */}
-      <section className="relative overflow-hidden pb-16 md:pb-20 -mt-16">
-        {/* Deep finance gradient */}
+      <section className="relative overflow-hidden -mt-16">
+        {/* Deep finance gradient that extends all the way */}
         <div className="absolute inset-0 hero-gradient" />
+        {/* Bottom fade — tall and smooth */}
+        <div className="absolute bottom-0 left-0 right-0 h-[40%] bg-gradient-to-t from-background via-background/70 to-transparent" />
         {/* Grid pattern overlay */}
         <div className="absolute inset-0 finance-grid opacity-[0.08]" />
         {/* Glow accents */}
@@ -136,7 +138,7 @@ export default function Index() {
           </div>
 
           {/* Stats */}
-          <div className="mt-14 flex justify-center gap-12 md:gap-20 animate-fade-in" style={{ animationDelay: "400ms" }}>
+          <div className="mt-14 mb-32 md:mb-44 flex justify-center gap-12 md:gap-20 animate-fade-in" style={{ animationDelay: "400ms" }}>
             {[
               { value: "19", label: "Free Tools" },
               { value: "100%", label: "Private & Secure" },
@@ -150,17 +152,9 @@ export default function Index() {
             ))}
           </div>
         </div>
-      </section>
 
-      {/* ─── Gradient transition bridge ─── */}
-      <div className="relative h-32 md:h-40 -mt-1">
-        <div className="absolute inset-0 bg-gradient-to-b from-[hsl(var(--hero-gradient-to))] to-background" />
-      </div>
-
-      {/* ─── Why 1StepAhead ─── */}
-      <section className="relative py-20 md:py-28 overflow-hidden">
-        <div className="absolute inset-0 finance-grid opacity-[0.04]" />
-        <div className="container relative">
+        {/* Why 1StepAhead — embedded inside hero for seamless blend */}
+        <div className="container relative z-10 pb-20 md:pb-28">
           <div className="text-center mb-14">
             <span className="inline-block px-3 py-1 rounded-full bg-accent text-accent-foreground text-xs font-semibold uppercase tracking-widest mb-4">
               Why Choose Us
