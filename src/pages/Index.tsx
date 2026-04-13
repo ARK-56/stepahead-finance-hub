@@ -90,7 +90,7 @@ export default function Index() {
         {/* Glow accents */}
         <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] rounded-full bg-[hsl(158,64%,42%,0.08)] blur-[120px]" />
         <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] rounded-full bg-[hsl(228,76%,62%,0.12)] blur-[100px]" />
-        <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-background to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-t from-background via-background/60 to-transparent" />
 
         <div className="container relative text-center pt-28 md:pt-40">
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary-foreground/10 text-primary-foreground/90 text-sm font-medium mb-8 backdrop-blur-sm border border-primary-foreground/10 animate-fade-in">
@@ -155,7 +155,7 @@ export default function Index() {
 
 
       {/* ─── Why 1StepAhead ─── */}
-      <section className="relative py-20 md:py-28 bg-gradient-to-b from-background via-accent/30 to-background overflow-hidden">
+      <section className="relative py-20 md:py-28 overflow-hidden">
         <div className="absolute inset-0 finance-grid opacity-[0.04]" />
         <div className="container relative">
           <div className="text-center mb-14">
