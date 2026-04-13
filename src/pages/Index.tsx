@@ -82,7 +82,7 @@ export default function Index() {
   return (
     <div>
       {/* ─── Hero ─── */}
-      <section className="relative overflow-hidden py-28 md:py-40">
+      <section className="relative overflow-hidden pt-0 pb-28 md:pb-40 -mt-16">
         {/* Deep finance gradient */}
         <div className="absolute inset-0 hero-gradient" />
         {/* Grid pattern overlay */}
@@ -90,9 +90,9 @@ export default function Index() {
         {/* Glow accents */}
         <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] rounded-full bg-[hsl(158,64%,42%,0.08)] blur-[120px]" />
         <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] rounded-full bg-[hsl(228,76%,62%,0.12)] blur-[100px]" />
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-background to-transparent" />
 
-        <div className="container relative text-center">
+        <div className="container relative text-center pt-28 md:pt-40">
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary-foreground/10 text-primary-foreground/90 text-sm font-medium mb-8 backdrop-blur-sm border border-primary-foreground/10 animate-fade-in">
             <Sparkles className="h-3.5 w-3.5" />
             19 Free Financial Tools — No Sign-Up Required

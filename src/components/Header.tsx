@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { TrendingUp, Menu, X, ChevronDown, CreditCard, Receipt, Wallet, Home, ArrowLeftRight } from "lucide-react";
 import {
@@ -62,12 +62,25 @@ const navCategories = [
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const isHome = location.pathname === "/";
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border/60 bg-card/70 backdrop-blur-xl">
+    <header className={`sticky top-0 z-50 transition-all duration-300 ${
+      isHome && !scrolled
+        ? "bg-transparent border-b border-transparent"
+        : "bg-card/70 backdrop-blur-xl border-b border-border/60"
+    }`}>
       <div className="container flex h-16 items-center justify-between">
-        <Link to="/" className="flex items-center gap-2.5 font-bold text-lg tracking-tight text-foreground font-display">
+        <Link to="/" className={`flex items-center gap-2.5 font-bold text-lg tracking-tight font-display transition-colors ${isHome && !scrolled ? "text-primary-foreground" : "text-foreground"}`}>
           <div className="h-8 w-8 rounded-lg hero-gradient flex items-center justify-center">
             <TrendingUp className="h-4 w-4 text-primary-foreground" />
           </div>
@@ -78,14 +91,22 @@ export default function Header() {
         <nav className="hidden lg:flex items-center gap-0.5 text-sm font-medium">
           <Link
             to="/"
-            className={`px-3 py-2 rounded-lg transition-colors ${location.pathname === "/" ? "text-primary bg-accent" : "text-muted-foreground hover:text-foreground hover:bg-muted"}`}
+            className={`px-3 py-2 rounded-lg transition-colors ${
+              isHome && !scrolled
+                ? "text-primary-foreground/90 hover:text-primary-foreground hover:bg-primary-foreground/10"
+                : location.pathname === "/" ? "text-primary bg-accent" : "text-muted-foreground hover:text-foreground hover:bg-muted"
+            }`}
           >
             Home
           </Link>
           {navCategories.map((cat) => (
             <DropdownMenu key={cat.label}>
               <DropdownMenuTrigger asChild>
-                <button className={`flex items-center gap-1 px-3 py-2 rounded-lg transition-colors text-muted-foreground hover:text-foreground hover:bg-muted`}>
+              <button className={`flex items-center gap-1 px-3 py-2 rounded-lg transition-colors ${
+                  isHome && !scrolled
+                    ? "text-primary-foreground/70 hover:text-primary-foreground hover:bg-primary-foreground/10"
+                    : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                }`}>
                   {cat.label}
                   <ChevronDown className="h-3 w-3 opacity-50" />
                 </button>
@@ -103,7 +124,11 @@ export default function Header() {
           ))}
           <Link
             to="/currency-converter"
-            className={`px-3 py-2 rounded-lg transition-colors ${location.pathname === "/currency-converter" ? "text-primary bg-accent" : "text-muted-foreground hover:text-foreground hover:bg-muted"}`}
+            className={`px-3 py-2 rounded-lg transition-colors ${
+              isHome && !scrolled
+                ? "text-primary-foreground/70 hover:text-primary-foreground hover:bg-primary-foreground/10"
+                : location.pathname === "/currency-converter" ? "text-primary bg-accent" : "text-muted-foreground hover:text-foreground hover:bg-muted"
+            }`}
           >
             Currency Converter
           </Link>
