@@ -82,15 +82,16 @@ export default function Index() {
   return (
     <div>
       {/* ─── Hero ─── */}
-      <section className="relative overflow-hidden pt-0 pb-28 md:pb-40 -mt-16">
-        {/* Deep finance gradient */}
+      <section className="relative overflow-hidden -mt-16">
+        {/* Deep finance gradient that extends all the way */}
         <div className="absolute inset-0 hero-gradient" />
+        {/* Bottom fade — tall and smooth */}
+        <div className="absolute bottom-0 left-0 right-0 h-[40%] bg-gradient-to-t from-background via-background/70 to-transparent" />
         {/* Grid pattern overlay */}
         <div className="absolute inset-0 finance-grid opacity-[0.08]" />
         {/* Glow accents */}
         <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] rounded-full bg-[hsl(158,64%,42%,0.08)] blur-[120px]" />
         <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] rounded-full bg-[hsl(228,76%,62%,0.12)] blur-[100px]" />
-        <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-background to-transparent" />
 
         <div className="container relative text-center pt-28 md:pt-40">
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary-foreground/10 text-primary-foreground/90 text-sm font-medium mb-8 backdrop-blur-sm border border-primary-foreground/10 animate-fade-in">
@@ -137,7 +138,7 @@ export default function Index() {
           </div>
 
           {/* Stats */}
-          <div className="mt-14 flex justify-center gap-12 md:gap-20 animate-fade-in" style={{ animationDelay: "400ms" }}>
+          <div className="mt-14 mb-32 md:mb-44 flex justify-center gap-12 md:gap-20 animate-fade-in" style={{ animationDelay: "400ms" }}>
             {[
               { value: "19", label: "Free Tools" },
               { value: "100%", label: "Private & Secure" },
@@ -151,13 +152,9 @@ export default function Index() {
             ))}
           </div>
         </div>
-      </section>
 
-
-      {/* ─── Why 1StepAhead ─── */}
-      <section className="relative py-20 md:py-28 bg-gradient-to-b from-background via-accent/30 to-background overflow-hidden">
-        <div className="absolute inset-0 finance-grid opacity-[0.04]" />
-        <div className="container relative">
+        {/* Why 1StepAhead — embedded inside hero for seamless blend */}
+        <div className="container relative z-10 pb-20 md:pb-28">
           <div className="text-center mb-14">
             <span className="inline-block px-3 py-1 rounded-full bg-accent text-accent-foreground text-xs font-semibold uppercase tracking-widest mb-4">
               Why Choose Us
@@ -165,7 +162,7 @@ export default function Index() {
             <h2 className="text-3xl md:text-4xl font-bold text-foreground font-display">
               Built for <span className="text-gradient">Smarter</span> Decisions
             </h2>
-            <p className="mt-3 text-muted-foreground max-w-lg mx-auto">
+            <p className="mt-3 text-foreground/60 max-w-lg mx-auto">
               Trusted by thousands of users to make confident financial decisions every day.
             </p>
           </div>
