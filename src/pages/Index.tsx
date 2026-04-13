@@ -82,7 +82,7 @@ export default function Index() {
   return (
     <div>
       {/* ─── Hero ─── */}
-      <section className="relative overflow-hidden pt-0 pb-28 md:pb-40 -mt-16">
+      <section className="relative overflow-hidden pb-16 md:pb-20 -mt-16">
         {/* Deep finance gradient */}
         <div className="absolute inset-0 hero-gradient" />
         {/* Grid pattern overlay */}
@@ -90,7 +90,6 @@ export default function Index() {
         {/* Glow accents */}
         <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] rounded-full bg-[hsl(158,64%,42%,0.08)] blur-[120px]" />
         <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] rounded-full bg-[hsl(228,76%,62%,0.12)] blur-[100px]" />
-        <div className="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-t from-background via-background/60 to-transparent" />
 
         <div className="container relative text-center pt-28 md:pt-40">
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary-foreground/10 text-primary-foreground/90 text-sm font-medium mb-8 backdrop-blur-sm border border-primary-foreground/10 animate-fade-in">
@@ -153,6 +152,10 @@ export default function Index() {
         </div>
       </section>
 
+      {/* ─── Gradient transition bridge ─── */}
+      <div className="relative h-32 md:h-40 -mt-1">
+        <div className="absolute inset-0 bg-gradient-to-b from-[hsl(var(--hero-gradient-to))] to-background" />
+      </div>
 
       {/* ─── Why 1StepAhead ─── */}
       <section className="relative py-20 md:py-28 overflow-hidden">
